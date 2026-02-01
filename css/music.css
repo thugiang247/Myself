@@ -572,6 +572,8 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+    /* Ensure image stays inside border-radius */
 }
 
 .playlist-icon {
@@ -694,6 +696,14 @@ section {
     align-items: center;
     justify-content: center;
     border: 1px solid var(--glass-border);
+    overflow: hidden;
+    /* Ensure image doesn't overflow */
+}
+
+.track-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .track-thumbnail i {
@@ -874,4 +884,8 @@ footer {
         width: 250px;
         height: 250px;
     }
+}
+
+.hidden {
+    display: none !important;
 }

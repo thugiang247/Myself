@@ -67,60 +67,7 @@
         </div>
     </section>
 
-    <!-- Music Player Section -->
-    <section id="player-section">
-        <div class="section-content">
-            <div class="player-container">
-                <div class="album-art-container">
-                    <div class="vinyl-record">
-                        <div class="vinyl-center"></div>
-                    </div>
-                    <div class="album-art">
-                        <i class="fas fa-music"></i>
-                    </div>
-                </div>
 
-                <div class="player-info">
-                    <h3 class="now-playing-label">Đang phát</h3>
-                    <h2 class="track-title">Chọn một bài hát</h2>
-                    <p class="track-artist">Nghệ sĩ</p>
-
-                    <div class="progress-container">
-                        <span class="time-current">0:00</span>
-                        <div class="progress-track">
-                            <div class="progress-fill"></div>
-                            <div class="progress-handle"></div>
-                        </div>
-                        <span class="time-total">0:00</span>
-                    </div>
-
-                    <div class="player-controls">
-                        <button class="control-btn shuffle-btn" title="Shuffle">
-                            <i class="fas fa-random"></i>
-                        </button>
-                        <button class="control-btn prev-btn" title="Previous">
-                            <i class="fas fa-step-backward"></i>
-                        </button>
-                        <button class="control-btn play-btn" title="Play">
-                            <i class="fas fa-play"></i>
-                        </button>
-                        <button class="control-btn next-btn" title="Next">
-                            <i class="fas fa-step-forward"></i>
-                        </button>
-                        <button class="control-btn repeat-btn" title="Repeat">
-                            <i class="fas fa-redo"></i>
-                        </button>
-                    </div>
-
-                    <div class="volume-control">
-                        <i class="fas fa-volume-up"></i>
-                        <input type="range" class="volume-slider" min="0" max="100" value="70">
-                        <span class="volume-value">70%</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Playlists Section -->
     <section id="playlists">
@@ -129,103 +76,15 @@
             <h2 class="section-title">Playlists Của Tôi</h2>
 
             <div class="playlists-grid">
-                <!-- Playlist 1: Chill Vibes -->
-                <div class="playlist-card">
-                    <div class="playlist-cover">
-                        <div class="playlist-icon">
-                            <i class="fas fa-cloud"></i>
-                        </div>
-                        <div class="playlist-overlay">
-                            <button class="play-playlist-btn">
-                                <i class="fas fa-play"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="playlist-info">
-                        <h3 class="playlist-title">Chill Vibes</h3>
-                        <p class="playlist-desc">Những giai điệu thư giãn cho những buổi chiều yên bình</p>
-                        <div class="playlist-meta">
-                            <span><i class="fas fa-music"></i> 25 bài</span>
-                            <span><i class="fas fa-clock"></i> 1h 45m</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Playlist 2: Focus Flow -->
-                <div class="playlist-card">
-                    <div class="playlist-cover">
-                        <div class="playlist-icon">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                        <div class="playlist-overlay">
-                            <button class="play-playlist-btn">
-                                <i class="fas fa-play"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="playlist-info">
-                        <h3 class="playlist-title">Focus Flow</h3>
-                        <p class="playlist-desc">Nhạc tập trung cho công việc và học tập</p>
-                        <div class="playlist-meta">
-                            <span><i class="fas fa-music"></i> 30 bài</span>
-                            <span><i class="fas fa-clock"></i> 2h 15m</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Playlist 3: Workout Energy -->
-                <div class="playlist-card">
-                    <div class="playlist-cover">
-                        <div class="playlist-icon">
-                            <i class="fas fa-dumbbell"></i>
-                        </div>
-                        <div class="playlist-overlay">
-                            <button class="play-playlist-btn">
-                                <i class="fas fa-play"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="playlist-info">
-                        <h3 class="playlist-title">Workout Energy</h3>
-                        <p class="playlist-desc">Năng lượng bùng nổ cho buổi tập luyện</p>
-                        <div class="playlist-meta">
-                            <span><i class="fas fa-music"></i> 20 bài</span>
-                            <span><i class="fas fa-clock"></i> 1h 20m</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Playlist 4: Night Drive -->
-                <div class="playlist-card">
-                    <div class="playlist-cover">
-                        <div class="playlist-icon">
-                            <i class="fas fa-moon"></i>
-                        </div>
-                        <div class="playlist-overlay">
-                            <button class="play-playlist-btn">
-                                <i class="fas fa-play"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="playlist-info">
-                        <h3 class="playlist-title">Night Drive</h3>
-                        <p class="playlist-desc">Âm nhạc cho những chuyến đi đêm</p>
-                        <div class="playlist-meta">
-                            <span><i class="fas fa-music"></i> 18 bài</span>
-                            <span><i class="fas fa-clock"></i> 1h 10m</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Playlist 5: Classical Elegance -->
-                <div class="playlist-card">
+                <!-- Playlist: Classical Elegance -->
+                <div class="playlist-card" id="card-classical">
                     <div class="playlist-cover">
                         <div class="playlist-icon">
                             <i class="fas fa-violin"></i>
                         </div>
                         <div class="playlist-overlay">
                             <button class="play-playlist-btn">
-                                <i class="fas fa-play"></i>
+                                <i class="fas fa-list"></i>
                             </button>
                         </div>
                     </div>
@@ -233,8 +92,30 @@
                         <h3 class="playlist-title">Classical Elegance</h3>
                         <p class="playlist-desc">Nhạc cổ điển tinh tế và sang trọng</p>
                         <div class="playlist-meta">
-                            <span><i class="fas fa-music"></i> 15 bài</span>
-                            <span><i class="fas fa-clock"></i> 1h 30m</span>
+                            <span><i class="fas fa-music"></i> 4 bài</span>
+                            <span><i class="fas fa-clock"></i> 17m</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Playlist: Nhạc thập cẩm -->
+                <div class="playlist-card" id="card-vietnamese">
+                    <div class="playlist-cover">
+                        <div class="playlist-icon">
+                            <i class="fas fa-compact-disc"></i>
+                        </div>
+                        <div class="playlist-overlay">
+                            <button class="play-playlist-btn">
+                                <i class="fas fa-list"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="playlist-info">
+                        <h3 class="playlist-title">Nhạc thập cẩm</h3>
+                        <p class="playlist-desc">Tổng hợp các bài hát Việt Nam bất hủ</p>
+                        <div class="playlist-meta">
+                            <span><i class="fas fa-music"></i> 8 bài</span>
+                            <span><i class="fas fa-clock"></i> 45m</span>
                         </div>
                     </div>
                 </div>
@@ -242,57 +123,177 @@
         </div>
     </section>
 
-    <!-- Favorites Section -->
-    <section id="favorites">
+    <!-- Classical Elegance Section -->
+    <section id="classical-elegance" class="hidden">
         <div class="section-content">
-            <span class="section-label">Bài hát yêu thích</span>
-            <h2 class="section-title">Top Tracks</h2>
+            <span class="section-label">Thư giãn tâm hồn</span>
+            <h2 class="section-title">Classical Elegance (Selections)</h2>
 
             <div class="tracks-list">
-                <!-- Track items will be added here -->
+                <!-- Track 1: Swan Lake -->
                 <div class="track-item">
                     <div class="track-number">1</div>
                     <div class="track-thumbnail">
                         <i class="fas fa-music"></i>
                     </div>
                     <div class="track-details">
-                        <h4 class="track-name">Tên bài hát sẽ được thêm sau</h4>
-                        <p class="track-artist-name">Nghệ sĩ</p>
+                        <h4 class="track-name">Swan Lake (Hồ Thiên Nga)</h4>
+                        <p class="track-artist-name">Pyotr Ilyich Tchaikovsky</p>
                     </div>
-                    <div class="track-duration">3:45</div>
-                    <button class="track-play-btn">
-                        <i class="fas fa-play"></i>
-                    </button>
+
                 </div>
 
+                <!-- Track 2: Moonlight Sonata -->
                 <div class="track-item">
                     <div class="track-number">2</div>
                     <div class="track-thumbnail">
                         <i class="fas fa-music"></i>
                     </div>
                     <div class="track-details">
-                        <h4 class="track-name">Tên bài hát sẽ được thêm sau</h4>
-                        <p class="track-artist-name">Nghệ sĩ</p>
+                        <h4 class="track-name">Moonlight Sonata</h4>
+                        <p class="track-artist-name">Ludwig van Beethoven</p>
                     </div>
-                    <div class="track-duration">4:20</div>
-                    <button class="track-play-btn">
-                        <i class="fas fa-play"></i>
-                    </button>
+
                 </div>
 
+                <!-- Track 3: Clair de Lune -->
                 <div class="track-item">
                     <div class="track-number">3</div>
                     <div class="track-thumbnail">
                         <i class="fas fa-music"></i>
                     </div>
                     <div class="track-details">
-                        <h4 class="track-name">Tên bài hát sẽ được thêm sau</h4>
-                        <p class="track-artist-name">Nghệ sĩ</p>
+                        <h4 class="track-name">Clair de Lune</h4>
+                        <p class="track-artist-name">Claude Debussy</p>
                     </div>
-                    <div class="track-duration">3:15</div>
-                    <button class="track-play-btn">
-                        <i class="fas fa-play"></i>
-                    </button>
+
+                </div>
+
+                <!-- Track 4: Nocturne Op. 9 No. 2 -->
+                <div class="track-item">
+                    <div class="track-number">4</div>
+                    <div class="track-thumbnail">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div class="track-details">
+                        <h4 class="track-name">Nocturne Op. 9 No. 2</h4>
+                        <p class="track-artist-name">Frédéric Chopin</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vietnamese Mix Section -->
+    <section id="vietnamese-mix" class="hidden">
+        <div class="section-content">
+            <span class="section-label">Giai điệu quê hương</span>
+            <h2 class="section-title">Nhạc thập cẩm (Selections)</h2>
+
+            <div class="tracks-list">
+                <!-- Track 1: Chuyện hoa sim -->
+                <div class="track-item">
+                    <div class="track-number">1</div>
+                    <div class="track-thumbnail">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div class="track-details">
+                        <h4 class="track-name">Chuyện hoa sim</h4>
+                        <p class="track-artist-name">Như Quỳnh / Tuấn Vũ</p>
+                    </div>
+
+                </div>
+
+                <!-- Track 2: Liên khúc Tuấn Vũ 5 -->
+                <div class="track-item">
+                    <div class="track-number">2</div>
+                    <div class="track-thumbnail">
+                        <i class="fas fa-microphone-alt"></i>
+                    </div>
+                    <div class="track-details">
+                        <h4 class="track-name">Liên khúc Tuấn Vũ 5</h4>
+                        <p class="track-artist-name">Tuấn Vũ</p>
+                    </div>
+
+                </div>
+
+                <!-- Track 3: Chị tôi -->
+                <div class="track-item">
+                    <div class="track-number">3</div>
+                    <div class="track-thumbnail">
+                        <i class="fas fa-guitar"></i>
+                    </div>
+                    <div class="track-details">
+                        <h4 class="track-name">Chị tôi</h4>
+                        <p class="track-artist-name">Trần Tiến / Bằng Kiều</p>
+                    </div>
+
+                </div>
+
+                <!-- Track 4: Em ơi Hà Nội phố -->
+                <div class="track-item">
+                    <div class="track-number">4</div>
+                    <div class="track-thumbnail">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div class="track-details">
+                        <h4 class="track-name">Em ơi Hà Nội phố</h4>
+                        <p class="track-artist-name">Bằng Kiều / Hồng Nhung</p>
+                    </div>
+
+                </div>
+
+                <!-- Track 5: Vĩnh biệt màu xanh -->
+                <div class="track-item">
+                    <div class="track-number">5</div>
+                    <div class="track-thumbnail">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div class="track-details">
+                        <h4 class="track-name">Vĩnh biệt màu xanh</h4>
+                        <p class="track-artist-name">Thanh Tuyền / Chế Linh</p>
+                    </div>
+
+                </div>
+
+                <!-- Track 6: Khói thuốc đợi chờ -->
+                <div class="track-item">
+                    <div class="track-number">6</div>
+                    <div class="track-thumbnail">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div class="track-details">
+                        <h4 class="track-name">Khói thuốc đợi chờ</h4>
+                        <p class="track-artist-name">Jimmii Nguyễn</p>
+                    </div>
+
+                </div>
+
+                <!-- Track 7: Chuyện người đan áo -->
+                <div class="track-item">
+                    <div class="track-number">7</div>
+                    <div class="track-thumbnail">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div class="track-details">
+                        <h4 class="track-name">Chuyện người đan áo</h4>
+                        <p class="track-artist-name">Giao Linh</p>
+                    </div>
+
+                </div>
+
+                <!-- Track 8: Tìm em câu ví sông Lam -->
+                <div class="track-item">
+                    <div class="track-number">8</div>
+                    <div class="track-thumbnail">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div class="track-details">
+                        <h4 class="track-name">Tìm em câu ví sông Lam</h4>
+                        <p class="track-artist-name">Anh Thơ / Trọng Tấn</p>
+                    </div>
+
                 </div>
             </div>
         </div>

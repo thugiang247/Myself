@@ -150,17 +150,41 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.style.zIndex = '1';
             });
         });
+    };
 
-        // Play playlist buttons
-        document.querySelectorAll('.play-playlist-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                btn.style.transform = 'scale(0.9)';
-                setTimeout(() => {
-                    btn.style.transform = '';
-                }, 150);
+    // ========== PLAYLIST INTERACTION ==========
+    const initPlaylistInteraction = () => {
+        const classicalCard = document.getElementById('card-classical');
+        const vietnameseCard = document.getElementById('card-vietnamese');
+
+        const classicalSection = document.getElementById('classical-elegance');
+        const vietnameseSection = document.getElementById('vietnamese-mix');
+
+        const hideAllSections = () => {
+            classicalSection.classList.add('hidden');
+            vietnameseSection.classList.add('hidden');
+        };
+
+        const toggleSection = (section) => {
+            const isHidden = section.classList.contains('hidden');
+            hideAllSections();
+            if (isHidden) {
+                section.classList.remove('hidden');
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        };
+
+        if (classicalCard && classicalSection) {
+            classicalCard.addEventListener('click', () => {
+                toggleSection(classicalSection);
             });
-        });
+        }
+
+        if (vietnameseCard && vietnameseSection) {
+            vietnameseCard.addEventListener('click', () => {
+                toggleSection(vietnameseSection);
+            });
+        }
     };
 
     // ========== TRACK ITEMS ==========
@@ -226,7 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollIndicator();
     initMusicPlayer();
     initVisualizer();
-    initPlaylistCards();
+    initPlaylistInteraction();
     initTrackItems();
     initScrollAnimations();
 });
