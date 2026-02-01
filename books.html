@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thư Viện Sách | Portfolio</title>
+    <!-- Fonts: Cormorant Garamond (Luxury Serif), Inter (Modern Sans-Serif) -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/books.css">
+</head>
+
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Space Background -->
+    <div class="space-background"></div>
+    <div class="space-overlay"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="logo">
+            <i class="fas fa-book-open"></i>
+            Thư Viện
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html"><i class="fas fa-home"></i> Trang chủ</a></li>
+            <li><a href="#classics">Kinh điển</a></li>
+            <li><a href="#modern">Hiện đại</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Những Cuốn Sách Tôi Từng Đọc</h1>
+            <p class="hero-subtitle">
+                "Đọc tiểu thuyết là để thoát li thực tại" - Một hành trình qua những trang sách đã định hình tư duy của
+                tôi
+            </p>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">Cuốn sách</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Bài học</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Đam mê</div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Classics Section -->
+    <section id="classics">
+        <div class="section-content">
+            <span class="section-label">Văn học kinh điển</span>
+            <h2 class="section-title">Những Tác Phẩm Bất Hủ</h2>
+
+            <div class="books-grid">
+                <!-- Book 1: Bá tước Monte Cristo -->
+                <div class="book-card">
+                    <div class="book-cover-container">
+                        <img src="images/Ba tuoc Monte Cristo.jpg" alt="Bá tước Monte Cristo" class="book-cover">
+                        <div class="book-overlay">
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="book-info">
+                        <h3 class="book-title">Bá tước Monte Cristo</h3>
+                        <p class="book-author">Alexandre Dumas</p>
+                        <div class="book-meta">
+                            <span class="book-genre"><i class="fas fa-tag"></i> Phiêu lưu</span>
+                            <span class="book-pages"><i class="fas fa-book"></i> 3 tập</span>
+                        </div>
+                        <p class="book-description">
+                            Lần đầu tiên tôi đọc quyển này hồi năm nhất, tôi mượn ở một thư viện nhỏ nằm trong ngõ Viện
+                            máy tên là D-Free Book. Sau khi đọc xong thì nó để lại một dư âm khủng khiếp. Mãi sau này,
+                            khoảng 2 năm sau, tại một hội sách nhỏ bên ven hồ, tôi đã mua đủ bộ 3 tập Bá tước Monte
+                            Cristo rồi hí hửng đem về nhà đọc dần.
+                        </p>
+                        <div class="book-tags">
+                            <span class="tag">Phục thù</span>
+                            <span class="tag">Công lý</span>
+                            <span class="tag">Hy vọng</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Book 2: Ba người lính ngự lâm -->
+                <div class="book-card">
+                    <div class="book-cover-container">
+                        <img src="images/Ba nguoi linh ngu lam.jpg" alt="Ba người lính ngự lâm" class="book-cover">
+                        <div class="book-overlay">
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="book-info">
+                        <h3 class="book-title">Ba người lính ngự lâm</h3>
+                        <p class="book-author">Alexandre Dumas</p>
+                        <div class="book-meta">
+                            <span class="book-genre"><i class="fas fa-tag"></i> Phiêu lưu</span>
+                            <span class="book-pages"><i class="fas fa-book"></i> Tiểu thuyết</span>
+                        </div>
+                        <p class="book-description">
+                            Câu chuyện xoay quanh chàng trai trẻ d'Artagnan trên con đường thực hiện ước mơ trở thành
+                            một lính ngự lâm và những cuộc phiêu lưu của anh cùng những người bạn Athos, Porthos và
+                            Aramis. Tác phẩm ca ngợi tình bạn, lòng trung thành, danh dự và tinh thần phiêu lưu.
+                        </p>
+                        <div class="book-tags">
+                            <span class="tag">Tình bạn</span>
+                            <span class="tag">Danh dự</span>
+                            <span class="tag">Phiêu lưu</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Book 3: Chúa ruồi -->
+                <div class="book-card">
+                    <div class="book-cover-container">
+                        <img src="images/Chua ruoi.jpg" alt="Chúa ruồi" class="book-cover">
+                        <div class="book-overlay">
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="book-info">
+                        <h3 class="book-title">Chúa ruồi</h3>
+                        <p class="book-author">William Golding</p>
+                        <div class="book-meta">
+                            <span class="book-genre"><i class="fas fa-tag"></i> Triết lý</span>
+                            <span class="book-pages"><i class="fas fa-book"></i> Tiểu thuyết</span>
+                        </div>
+                        <p class="book-description">
+                            Một nhóm học sinh bị mắc kẹt trên một hòn đảo hoang sau một vụ tai nạn máy bay. Ban đầu,
+                            chúng cố gắng xây dựng một xã hội văn minh, nhưng dần dần bản năng hoang dã và bạo lực đã
+                            chiến thắng, dẫn đến một kết cục bi thảm. Truyện khám phá sự mỏng manh của nền văn minh và
+                            cái ác tiềm ẩn bên trong con người.
+                        </p>
+                        <div class="book-tags">
+                            <span class="tag">Bản năng</span>
+                            <span class="tag">Văn minh</span>
+                            <span class="tag">Triết học</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modern/Vietnamese Section -->
+    <section id="modern">
+        <div class="section-content">
+            <span class="section-label">Văn học Việt Nam</span>
+            <h2 class="section-title">Những Tác Phẩm Việt</h2>
+
+            <div class="books-grid">
+                <!-- Book 4: Số đỏ -->
+                <div class="book-card">
+                    <div class="book-cover-container">
+                        <img src="images/So do.jpg" alt="Số đỏ" class="book-cover">
+                        <div class="book-overlay">
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="book-info">
+                        <h3 class="book-title">Số đỏ</h3>
+                        <p class="book-author">Vũ Trọng Phụng</p>
+                        <div class="book-meta">
+                            <span class="book-genre"><i class="fas fa-tag"></i> Trào phúng</span>
+                            <span class="book-pages"><i class="fas fa-book"></i> Tiểu thuyết</span>
+                        </div>
+                        <p class="book-description">
+                            Một tiểu thuyết trào phúng kinh điển về Xuân Tóc Đỏ, một kẻ hạ lưu, nhờ may mắn và sự lố
+                            bịch của xã hội thượng lưu rởm đời mà bước lên đỉnh cao danh vọng. Tác phẩm là một bức tranh
+                            biếm họa sắc sảo về xã hội Việt Nam thời Pháp thuộc.
+                        </p>
+                        <div class="book-tags">
+                            <span class="tag">Trào phúng</span>
+                            <span class="tag">Xã hội</span>
+                            <span class="tag">Hiện thực</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Book 5: Làm đĩ -->
+                <div class="book-card">
+                    <div class="book-cover-container">
+                        <img src="images/Lam di.jpg" alt="Làm đĩ" class="book-cover">
+                        <div class="book-overlay">
+                            <div class="book-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="book-info">
+                        <h3 class="book-title">Làm đĩ</h3>
+                        <p class="book-author">Vũ Trọng Phụng</p>
+                        <div class="book-meta">
+                            <span class="book-genre"><i class="fas fa-tag"></i> Hiện thực</span>
+                            <span class="book-pages"><i class="fas fa-book"></i> Tiểu thuyết</span>
+                        </div>
+                        <p class="book-description">
+                            Cuốn tiểu thuyết kể về cuộc đời bi kịch của Huyền, một cô gái trẻ bị xã hội và những định
+                            kiến hà khắc xô đẩy vào con đường làm gái mại dâm. Tác phẩm là lời tố cáo mạnh mẽ thói đạo
+                            đức giả và sự thiếu hụt trong giáo dục giới tính ở xã hội đương thời.
+                        </p>
+                        <div class="book-tags">
+                            <span class="tag">Xã hội</span>
+                            <span class="tag">Bi kịch</span>
+                            <span class="tag">Phê phán</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section id="quote-section">
+        <div class="quote-container">
+            <i class="fas fa-quote-left quote-icon"></i>
+            <p class="quote-text">
+                "Một căn phòng không có sách giống như một cơ thể không có linh hồn."
+            </p>
+            <p class="quote-author">— Marcus Tullius Cicero</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 Minh Nguyễn. Designed with <i class="fas fa-heart"></i> and <i class="fas fa-book"></i></p>
+            <a href="index.html" class="back-home">
+                <i class="fas fa-arrow-left"></i> Quay lại trang chủ
+            </a>
+        </div>
+    </footer>
+
+    <script src="js/books.js"></script>
+</body>
+
+</html>

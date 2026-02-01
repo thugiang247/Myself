@@ -1,27 +1,63 @@
-<!DOCTYPE html><html lang="vi"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giới Thiệu Bản Thân</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+    <title>Giới Thiệu Bản Thân | Portfolio</title>
+    <!-- Fonts: Cormorant Garamond (Luxury Serif), Inter (Modern Sans-Serif) -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
 
 </head>
+
 <body>
     <!-- Progress Bar -->
     <div class="progress-bar" id="progressBar"></div>
 
-    <!-- Parallax Floating Shapes -->
-    <div class="parallax-container" id="parallaxContainer">
-        <div class="floating-shape shape-1" data-speed="0.03"></div>
-        <div class="floating-shape shape-2" data-speed="0.05"></div>
-        <div class="floating-shape shape-3" data-speed="0.04"></div>
-        <div class="floating-shape shape-4" data-speed="0.02"></div>
-        <div class="floating-shape shape-5" data-speed="0.06"></div>
-        <div class="floating-shape shape-6" data-speed="0.035"></div>
+    <!-- Space Background Layer (Static Deep Base) -->
+    <div class="space-background"></div>
+    <div class="space-overlay"></div>
+
+    <!-- Dynamic Universe (Stars & Planets) -->
+    <div id="universe">
+        <!-- Shooting Stars Container -->
+        <div id="shooting-stars"></div>
+
+        <div class="orbit-system">
+            <!-- Sun/Center Glow -->
+            <div class="sun-glow"></div>
+
+            <!-- Orbit 1 -->
+            <div class="orbit orbit-1">
+                <div class="planet-container p-1">
+                    <div class="planet planet-earth"></div>
+                </div>
+            </div>
+
+            <!-- Orbit 2 -->
+            <div class="orbit orbit-2">
+                <div class="planet-container p-2">
+                    <div class="planet planet-mars"></div>
+                </div>
+            </div>
+
+            <!-- Orbit 3 -->
+            <div class="orbit orbit-3">
+                <div class="planet-container p-3">
+                    <div class="planet planet-jupiter"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="bg-pattern"></div>
+    <!-- Cursor Particle Trail -->
+    <canvas id="particle-canvas"></canvas>
 
     <!-- Navigation -->
     <nav id="navbar">
@@ -29,8 +65,9 @@
         <ul class="nav-links" id="navLinks">
             <li><a href="#hero">Mở đầu</a></li>
             <li><a href="#about">Về tôi</a></li>
+            <li><a href="#skills">Kỹ năng</a></li>
             <li><a href="#interests">Sở thích</a></li>
-            <li><a href="#footer">Liên hệ</a></li>
+            <li><a href="#contact">Liên hệ</a></li>
         </ul>
         <button class="menu-toggle" id="menuToggle">
             <i class="fas fa-bars"></i>
@@ -40,10 +77,10 @@
     <!-- Hero Section -->
     <section id="hero">
         <div class="section-content">
-            <p class="hero-greeting">Xin chào, rất vui được gặp bạn</p>
-            <h1 class="hero-title">Tên của bạn</h1>
+            <p class="hero-greeting">Xin chào, rất vui được gặp bạn ✨</p>
+            <h1 class="hero-title">Minh Nguyễn</h1>
             <p class="hero-subtitle">
-                [Một dòng giới thiệu ngắn gọn về bản thân bạn sẽ được đặt ở đây]
+                Kỹ sư Cơ điện tử | Người đam mê công nghệ, sách và khám phá vũ trụ
             </p>
         </div>
         <div class="scroll-indicator">
@@ -64,6 +101,114 @@
         </div>
     </section>
 
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="section-content">
+            <span class="section-label">Kỹ năng</span>
+            <h2 class="section-title">Những gì tôi có thể làm</h2>
+
+            <div class="skills-container">
+                <!-- Technical Skills -->
+                <div class="skill-category">
+                    <h3 class="category-title">
+                        <i class="fas fa-cogs"></i>
+                        Kỹ thuật
+                    </h3>
+                    <div class="skills-list">
+                        <div class="skill-item" data-progress="85">
+                            <div class="skill-header">
+                                <span class="skill-name">Cơ khí</span>
+                                <span class="skill-percentage">0%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item" data-progress="75">
+                            <div class="skill-header">
+                                <span class="skill-name">Điện tử</span>
+                                <span class="skill-percentage">0%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item" data-progress="70">
+                            <div class="skill-header">
+                                <span class="skill-name">Lập trình (Python, C++)</span>
+                                <span class="skill-percentage">0%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item" data-progress="80">
+                            <div class="skill-header">
+                                <span class="skill-name">CAD/CAM</span>
+                                <span class="skill-percentage">0%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soft Skills -->
+                <div class="skill-category">
+                    <h3 class="category-title">
+                        <i class="fas fa-lightbulb"></i>
+                        Kỹ năng mềm
+                    </h3>
+                    <div class="skills-list">
+                        <div class="skill-item" data-progress="90">
+                            <div class="skill-header">
+                                <span class="skill-name">Tư duy phản biện</span>
+                                <span class="skill-percentage">0%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item" data-progress="85">
+                            <div class="skill-header">
+                                <span class="skill-name">Giải quyết vấn đề</span>
+                                <span class="skill-percentage">0%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item" data-progress="80">
+                            <div class="skill-header">
+                                <span class="skill-name">Làm việc nhóm</span>
+                                <span class="skill-percentage">0%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item" data-progress="88">
+                            <div class="skill-header">
+                                <span class="skill-name">Tự học</span>
+                                <span class="skill-percentage">0%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Interests Section -->
     <section id="interests">
         <div class="section-content">
@@ -75,7 +220,7 @@
                 <div class="interest-block" data-tilt="">
                     <div class="tilt-shine"></div>
                     <div class="interest-image">
-                        <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=300&fit=crop&q=80" alt="Đọc sách">
+                        <img src="images/reading.png" alt="Đọc sách">
                     </div>
                     <div class="interest-content">
                         <div class="interest-icon">
@@ -83,14 +228,12 @@
                         </div>
                         <h3 class="interest-title">Đọc sách</h3>
                         <p class="interest-desc">
-                            Tôi thích nhất là thể loại tiểu thuyết, và người ta từng nói "Đọc tiểu thuyết là để thoát li thực tại."
+                            Tôi thích nhất là thể loại tiểu thuyết, và người ta từng nói "Đọc tiểu thuyết là để thoát li
+                            thực tại."
                         </p>
-                        <div class="interest-tags">
-                            <span class="interest-tag">Tag 1</span>
-                            <span class="interest-tag">Tag 2</span>
-                            <span class="interest-tag">Tag 3</span>
-                        </div>
-
+                        <a href="books.html" class="interest-link">
+                            <i class="fas fa-book-reader"></i> Xem thư viện sách
+                        </a>
                     </div>
                 </div>
 
@@ -98,7 +241,7 @@
                 <div class="interest-block" data-tilt="">
                     <div class="tilt-shine"></div>
                     <div class="interest-image">
-                        <img src="https://images.unsplash.com/photo-1515552726023-7125c8d07fb3?w=400&h=300&fit=crop&q=80" alt="Âm nhạc">
+                        <img src="images/music.png" alt="Âm nhạc">
                     </div>
                     <div class="interest-content">
                         <div class="interest-icon">
@@ -106,15 +249,12 @@
                         </div>
                         <h3 class="interest-title">Âm nhạc</h3>
                         <p class="interest-desc">
-                            Tôi có thể "tiêu hóa" nhiều thể loại nhạc: rap, vinahouse, nhạc vàng, nhạc cổ điển, nhạc trữ tình,....
+                            Tôi có thể "tiêu hóa" nhiều thể loại nhạc: rap, vinahouse, nhạc vàng, nhạc cổ điển, nhạc trữ
+                            tình,....
 
-Ngoài ra thì tôi rất rất muốn học chơi piano. Sau này khi kinh tế dư dả, nhất định tôi sẽ học.
+                            Ngoài ra thì tôi rất rất muốn học chơi piano. Sau này khi kinh tế dư dả, nhất định tôi sẽ
+                            học.
                         </p>
-                        <div class="interest-tags">
-                            <span class="interest-tag">Tag 1</span>
-                            <span class="interest-tag">Tag 2</span>
-                            <span class="interest-tag">Tag 3</span>
-                        </div>
                     </div>
                 </div>
 
@@ -122,7 +262,7 @@ Ngoài ra thì tôi rất rất muốn học chơi piano. Sau này khi kinh tế
                 <div class="interest-block" data-tilt="">
                     <div class="tilt-shine"></div>
                     <div class="interest-image">
-                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&q=80" alt="Thể thao">
+                        <img src="images/sports.png" alt="Thể thao">
                     </div>
                     <div class="interest-content">
                         <div class="interest-icon">
@@ -130,15 +270,11 @@ Ngoài ra thì tôi rất rất muốn học chơi piano. Sau này khi kinh tế
                         </div>
                         <h3 class="interest-title">Thể thao</h3>
                         <p class="interest-desc">
-                            Trước kia tôi đam mê chạy bộ và đã chạy khá nhiều. Giờ tôi đã "gác giày" rồi và chỉ muốn chạy vào những dịp đặc biệt.
+                            Trước kia tôi đam mê chạy bộ và đã chạy khá nhiều. Giờ tôi đã "gác giày" rồi và chỉ muốn
+                            chạy vào những dịp đặc biệt.
 
-Hiện tôi vẫn cố gắng duy trì thói quen thể thao 4 buổi/tuần.
+                            Hiện tôi vẫn cố gắng duy trì thói quen thể thao 4 buổi/tuần.
                         </p>
-                        <div class="interest-tags">
-                            <span class="interest-tag">Tag 1</span>
-                            <span class="interest-tag">Tag 2</span>
-                            <span class="interest-tag">Tag 3</span>
-                        </div>
                     </div>
                 </div>
 
@@ -146,7 +282,8 @@ Hiện tôi vẫn cố gắng duy trì thói quen thể thao 4 buổi/tuần.
                 <div class="interest-block" data-tilt="">
                     <div class="tilt-shine"></div>
                     <div class="interest-image">
-                        <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&h=300&fit=crop&q=80" alt="Viết lách">
+                        <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&h=600&fit=crop&q=90"
+                            alt="Viết lách">
                     </div>
                     <div class="interest-content">
                         <div class="interest-icon">
@@ -154,104 +291,75 @@ Hiện tôi vẫn cố gắng duy trì thói quen thể thao 4 buổi/tuần.
                         </div>
                         <h3 class="interest-title">Viết lách</h3>
                         <p class="interest-desc">
-                            Viết là một cách rất hay để hiểu bản thân hơn. Đôi khi tôi cảm thấy một phiền muộn nào đó và viết ra giấy, kết quả luôn làm tôi bất ngờ
+                            Viết là một cách rất hay để hiểu bản thân hơn. Đôi khi tôi cảm thấy một phiền muộn nào đó và
+                            viết ra giấy, kết quả luôn làm tôi bất ngờ
                         </p>
-                        <div class="interest-tags">
-                            <span class="interest-tag">Tag 1</span>
-                            <span class="interest-tag">Tag 2</span>
-                            <span class="interest-tag">Tag 3</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Books -->
-                <div class="interest-block full-width-card" data-tilt="">
-                    <div class="tilt-shine"></div>
-                    <div class="interest-content">
-                        <div class="interest-icon">
-                            <i class="fas fa-book"></i>
-                        </div>
-                        <h3 class="interest-title">Một số cuốn sách từng đọc</h3>
-                        <div class="books-list">
-                            <div class="book-item">
-                                <div class="book-cover">
-                                    <img src="images/Ba tuoc Monte Cristo.jpg" alt="Bìa sách Bá tước Monte Cristo">
-                                </div>
-                                <div class="book-info">
-                                    <h5>Bá tước Monte Cristo</h5>
-                                    <p>Lần đầu tiên tôi đọc quyển này hồi năm nhất, tôi mượn ở một thư viện nhỏ nằm trong ngõ Viện máy tên là D-Free Book. Sau khi đọc xong thì nó để lại một dư âm khủng khiếp. Mãi sau này, khoảng 2 năm sau, tại một hội sách nhỏ bên ven hồ, tôi đã mua đủ bộ 3 tập Bá tước Monte Cristo rồi hí hửng đem về nhà đọc dần.</p>
-                                </div>
-                            </div>
-                            <div class="book-item">
-                                <div class="book-cover">
-                                    <img src="images/Ba nguoi linh ngu lam.jpg" alt="Bìa sách Ba người lính ngự lâm">
-                                </div>
-                                <div class="book-info">
-                                    <h5>Ba người lính ngự lâm</h5>
-                                    <p>Câu chuyện xoay quanh chàng trai trẻ d'Artagnan trên con đường thực hiện ước mơ trở thành một lính ngự lâm và những cuộc phiêu lưu của anh cùng những người bạn Athos, Porthos và Aramis. Tác phẩm ca ngợi tình bạn, lòng trung thành, danh dự và tinh thần phiêu lưu.</p>
-                                </div>
-                            </div>
-                            <div class="book-item">
-                                <div class="book-cover">
-                                    <img src="images/Chua ruoi.jpg" alt="Bìa sách Chúa ruồi">
-                                </div>
-                                <div class="book-info">
-                                    <h5>Chúa ruồi</h5>
-                                    <p>Một nhóm học sinh bị mắc kẹt trên một hòn đảo hoang sau một vụ tai nạn máy bay. Ban đầu, chúng cố gắng xây dựng một xã hội văn minh, nhưng dần dần bản năng hoang dã và bạo lực đã chiến thắng, dẫn đến một kết cục bi thảm. Truyện khám phá sự mỏng manh của nền văn minh và cái ác tiềm ẩn bên trong con người.</p>
-                                </div>
-                            </div>
-                            <div class="book-item">
-                                <div class="book-cover">
-                                    <img src="images/So do.jpg" alt="Bìa sách Số đỏ">
-                                </div>
-                                <div class="book-info">
-                                    <h5>Số đỏ</h5>
-                                    <p>Một tiểu thuyết trào phúng kinh điển về Xuân Tóc Đỏ, một kẻ hạ lưu, nhờ may mắn và sự lố bịch của xã hội thượng lưu rởm đời mà bước lên đỉnh cao danh vọng. Tác phẩm là một bức tranh biếm họa sắc sảo về xã hội Việt Nam thời Pháp thuộc.</p>
-                                </div>
-                            </div>
-                            <div class="book-item">
-                                <div class="book-cover">
-                                    <img src="images/Lam di.jpg" alt="Bìa sách Làm đĩ">
-                                </div>
-                                <div class="book-info">
-                                    <h5>Làm đĩ</h5>
-                                    <p>Cuốn tiểu thuyết kể về cuộc đời bi kịch của Huyền, một cô gái trẻ bị xã hội và những định kiến hà khắc xô đẩy vào con đường làm gái mại dâm. Tác phẩm là lời tố cáo mạnh mẽ thói đạo đức giả và sự thiếu hụt trong giáo dục giới tính ở xã hội đương thời.</p>
-                                </div>
-                            </div>
-                            <!-- Thêm sách khác ở đây -->
-                        </div>
-                        <div class="interest-tags">
-                            <span class="interest-tag">Sách</span>
-                            <span class="interest-tag">Đọc</span>
-                            <span class="interest-tag">Ghi chú</span>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer Section -->
-    <section id="footer">
+    <!-- Contact Section -->
+    <section id="contact" class="glass-section">
         <div class="section-content">
-            <p class="footer-quote">
-                Đặt một câu trích dẫn yêu thích của bạn ở đây
-            </p>
-            <p class="footer-author">— Tác giả</p>
+            <span class="section-label">Liên hệ</span>
+            <h2 class="section-title">Kết nối với tôi</h2>
 
-            <div class="social-links">
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <p class="contact-intro">
+                        Tôi luôn sẵn sàng cho những cơ hội hợp tác mới hoặc chỉ đơn giản là trò chuyện về công nghệ,
+                        sách và vũ trụ.
+                    </p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:email@example.com">minh.example@email.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Hà Nội, Việt Nam</span>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Github"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Tên của bạn" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email của bạn" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Nội dung tin nhắn" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Gửi tin nhắn</button>
+                </form>
             </div>
-
-            <p class="copyright">© 2025 Tên của bạn. Tất cả quyền được bảo lưu.</p>
         </div>
     </section>
+
+    <!-- Footer -->
+    <footer id="footer-copyright">
+        <div class="footer-content">
+            <p class="footer-quote">"Hai điều tràn ngập tâm tư ...: bầu trời đầy sao trên đầu tôi và quy luật đạo đức ở
+                trong tôi."</p>
+            <p class="copyright">© 2025 Minh. Designed with Cosmic Creativity.</p>
+        </div>
+    </footer>
 
     <script src="js/main.js"></script>
 
 
 
-</body></html>
+</body>
+
+</html>
