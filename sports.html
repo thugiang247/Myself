@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thể Thao | Portfolio</title>
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;700;900&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/sports.css">
+</head>
+
+<body>
+
+    <!-- Background Elements -->
+    <div class="bg-mesh"></div>
+    <div class="grid-overlay"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="logo">
+            <i class="fas fa-running"></i>
+            <span>SPORT<span style="color: var(--accent-secondary)">MODE</span></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="music.html">Âm nhạc</a></li>
+            <li><a href="#stats">Thành tích</a></li>
+            <li><a href="#gallery">Hoạt động</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-ring"></div>
+        <div class="hero-content">
+            <div class="hero-badge">Lifestyle</div>
+            <h1 class="hero-title">Pushing <br>Limits</h1>
+            <p class="hero-subtitle">
+                "Kỷ luật là cầu nối giữa mục tiêu và thành tựu." <br>
+                Chạy bộ • Gym • Tự do
+            </p>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats">
+        <div class="section-header">
+            <h2 class="section-title">Thống Kê <span>Cá Nhân</span></h2>
+            <p class="section-desc">Những con số biết nói trong hành trình rèn luyện</p>
+        </div>
+
+        <div class="stats-grid">
+            <!-- Stat 1 -->
+            <div class="stat-card">
+                <i class="fas fa-road stat-icon"></i>
+                <span class="stat-number" data-target="1500" data-suffix="+">0</span>
+                <span class="stat-label">Km đã chạy</span>
+            </div>
+
+            <!-- Stat 2 -->
+            <div class="stat-card">
+                <i class="fas fa-fire stat-icon"></i>
+                <span class="stat-number" data-target="200" data-suffix="h">0</span>
+                <span class="stat-label">Giờ tập luyện</span>
+            </div>
+
+            <!-- Stat 3 -->
+            <div class="stat-card">
+                <i class="fas fa-medal stat-icon"></i>
+                <span class="stat-number" data-target="5" data-suffix="">0</span>
+                <span class="stat-label">Giải chạy tham gia</span>
+            </div>
+
+            <!-- Stat 4 -->
+            <div class="stat-card">
+                <i class="fas fa-stopwatch stat-icon"></i>
+                <span class="stat-number" data-target="21" data-suffix="km">0</span>
+                <span class="stat-label">Longest Run</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="section-header">
+            <h2 class="section-title">Hành Trình <span>Chạy Bộ</span></h2>
+            <p class="section-desc">Những khoảnh khắc đáng nhớ trên đường chạy</p>
+        </div>
+
+        <div class="photo-gallery">
+            <!-- Photo 1 -->
+            <div class="photo-card">
+                <img src="images/run1.jpg" alt="Giải chạy 1">
+                <div class="photo-overlay">
+                    <h3 class="photo-title">Poly Run 2023 - Team</h3>
+                    <p class="photo-date"><i class="fas fa-calendar-alt"></i> 2023</p>
+                </div>
+            </div>
+
+            <!-- Photo 2 -->
+            <div class="photo-card">
+                <img src="images/run2.jpg" alt="Giải chạy 2">
+                <div class="photo-overlay">
+                    <h3 class="photo-title">Vinh Quang</h3>
+                    <p class="photo-date"><i class="fas fa-medal"></i> Giải Nhì</p>
+                </div>
+            </div>
+
+            <!-- Photo 3 -->
+            <div class="photo-card">
+                <img src="images/run3.jpg" alt="Giải chạy 3">
+                <div class="photo-overlay">
+                    <h3 class="photo-title">Chiến Thắng</h3>
+                    <p class="photo-date"><i class="fas fa-trophy"></i> Top Podium</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Highlight Section -->
+    <section id="video">
+        <div class="section-header">
+            <h2 class="section-title">Video <span>Highlights</span></h2>
+            <p class="section-desc">Những khoảnh khắc sống động trên đường đua</p>
+        </div>
+
+        <div class="video-container">
+            <div class="video-wrapper">
+                <!-- Placeholder until video is uploaded -->
+                <video controls poster="images/run1.jpg" id="main-video">
+                    <source src="videos/muscle-up.mp4" type="video/mp4">
+                    Trình duyệt của bạn không hỗ trợ thẻ video.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <!-- Placeholder Section 2: Goals -->
+    <section id="goals">
+        <div class="section-header">
+            <h2 class="section-title">Mục Tiêu <span>2025</span></h2>
+            <p class="section-desc">Những cột mốc tiếp theo</p>
+        </div>
+
+        <div class="content-block">
+            <i class="fas fa-tasks"></i>
+            <h3>Kế hoạch tập luyện</h3>
+            <p>Hiện tại, tôi bận học và làm nên không dành nhiều thời gian cho tập thể thao như trước. Tuy nhiên tôi vẫn cố gắng duy trì thói quen vận động để cơ thể không bị ù lì.</p>
+            <p>Nói là "tập thể thao" nghe khủng khiếp quá nên tôi thích nói là "vận động" hơn.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Minh Nguyễn. Keep moving forward.</p>
+        <a href="index.html"
+            style="color: var(--accent-primary); margin-top: 10px; display: inline-block; text-decoration: none;">
+            <i class="fas fa-arrow-left"></i> Quay lại trang chủ
+        </a>
+    </footer>
+
+    <script src="js/sports.js"></script>
+</body>
+
+</html>

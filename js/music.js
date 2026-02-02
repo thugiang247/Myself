@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!indicator) return;
 
         indicator.addEventListener('click', () => {
-            const nextSection = document.querySelector('#player-section');
+            const nextSection = document.querySelector('#playlists');
             if (nextSection) {
                 nextSection.scrollIntoView({ behavior: 'smooth' });
             }
@@ -56,8 +56,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const vinylRecord = document.querySelector('.vinyl-record');
         const volumeSlider = document.querySelector('.volume-slider');
         const volumeValue = document.querySelector('.volume-value');
+        const progressFill = document.querySelector('.progress-fill');
+        const timeCurrent = document.querySelector('.time-current');
 
         let isPlaying = false;
+        let progress = 0;
+        let interval;
+
+        const formatTime = (seconds) => {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        };
 
         // Play/Pause button
         if (playBtn) {
@@ -69,10 +79,25 @@ document.addEventListener('DOMContentLoaded', () => {
                     icon.classList.remove('fa-play');
                     icon.classList.add('fa-pause');
                     vinylRecord?.classList.add('playing');
+
+                    // Simulate progress
+                    interval = setInterval(() => {
+                        progress += 0.1;
+                        if (progress > 100) progress = 0;
+                        if (progressFill) progressFill.style.width = `${progress}%`;
+
+                        // Fake time update (assuming 3:45 duration)
+                        const totalSeconds = 225;
+                        const currentSeconds = (progress / 100) * totalSeconds;
+                        if (timeCurrent) timeCurrent.textContent = formatTime(currentSeconds);
+
+                    }, 100);
+
                 } else {
                     icon.classList.remove('fa-pause');
                     icon.classList.add('fa-play');
                     vinylRecord?.classList.remove('playing');
+                    clearInterval(interval);
                 }
             });
         }
@@ -136,6 +161,72 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
             canvas.height = 200;
+        });
+    };
+
+    // ========== PARTICLE BACKGROUND ==========
+    const initParticles = () => {
+        const canvas = document.getElementById('particle-canvas');
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particlesArray = [];
+        const numberOfParticles = 100;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2;
+                this.speedX = (Math.random() * 0.5) - 0.25;
+                this.speedY = (Math.random() * 0.5) - 0.25;
+                this.opacity = Math.random() * 0.5 + 0.1;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+
+            draw() {
+                ctx.fillStyle = `rgba(255, 215, 0, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+            }
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particlesArray.length = 0;
+            init();
         });
     };
 
@@ -250,6 +341,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollIndicator();
     initMusicPlayer();
     initVisualizer();
+    initParticles();
     initPlaylistInteraction();
     initTrackItems();
     initScrollAnimations();
