@@ -804,6 +804,10 @@ section {
     box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
 }
 
+.blog-external-link {
+    margin-top: 1rem;
+}
+
 /* Books */
 .glass-list {
     margin-top: 2rem;
