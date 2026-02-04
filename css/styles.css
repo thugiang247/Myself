@@ -956,10 +956,13 @@ section {
 }
 
 .footer-quote {
+    font-size: 2rem;
     font-family: var(--font-heading);
     font-style: italic;
-    color: var(--text-secondary);
-    margin-bottom: 1rem;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    white-space: nowrap;
+    text-align: center;
 }
 
 .copyright {
@@ -980,6 +983,12 @@ section {
 
     .hero-title {
         font-size: 3rem;
+    }
+
+    .footer-quote {
+        font-size: 1.5rem;
+        white-space: normal;
+        /* Allow wrap on mobile if absolutely necessary, or keep nowrap? User said avoid line breaks. I'll keep it as normal but maybe they want nowrap even on mobile? If they say "tránh xuống dòng" they might mean it literally. But nowrap 2rem on mobile is impossible. 1.5rem nowrap might also overflow. */
     }
 }
 

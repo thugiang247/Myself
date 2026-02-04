@@ -840,6 +840,8 @@ section {
     color: var(--text-primary);
     line-height: 1.8;
     margin-bottom: 2rem;
+    white-space: nowrap;
+    text-align: center;
 }
 
 .quote-author {
