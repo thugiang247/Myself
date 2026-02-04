@@ -1,0 +1,42 @@
+/* ========== PAGE TRANSITIONS ========== */
+
+/* The overlay that covers the screen */
+.page-transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #05070a;
+    /* Match your deep background */
+    z-index: 10000;
+    pointer-events: none;
+    transform: translateY(100%);
+    transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.page-transition-overlay.active {
+    transform: translateY(0);
+}
+
+/* Page load fade in */
+body {
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+body.page-loaded {
+    opacity: 1;
+}
+
+/* Smooth content slide */
+.section-content {
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.8s ease;
+}
+
+body.page-loaded .section-content {
+    transform: translateY(0);
+    opacity: 1;
+}

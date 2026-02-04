@@ -1,0 +1,75 @@
+/* ========== TECHNICAL PRECISION CURSOR ========== */
+.cursor-dot {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    background-color: var(--text-accent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 100000;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+}
+
+.cursor-ring {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255, 215, 0, 0.4);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        height 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        border-color 0.3s ease,
+        background-color 0.3s ease;
+}
+
+/* Hide default cursor */
+body.custom-cursor-active {
+    cursor: none;
+}
+
+body.custom-cursor-active a,
+body.custom-cursor-active button {
+    cursor: none;
+}
+
+/* Hover States */
+body.cursor-hovering .cursor-ring {
+    width: 70px;
+    height: 70px;
+    border-color: var(--text-accent);
+    background-color: rgba(255, 215, 0, 0.05);
+}
+
+body.cursor-hovering .cursor-dot {
+    width: 10px;
+    height: 10px;
+    opacity: 0.5;
+}
+
+/* Clicking State */
+body.cursor-clicking .cursor-ring {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 215, 0, 0.2);
+}
+
+/* Magnetic Effect class applied via JS */
+.cursor-magnetic {
+    transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1) !important;
+}
+
+@media (max-width: 768px) {
+
+    .cursor-dot,
+    .cursor-ring {
+        display: none;
+    }
+
+    body.custom-cursor-active {
+        cursor: auto;
+    }
+}
