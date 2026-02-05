@@ -110,102 +110,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ========== INTERACTIVE PARALLAX & TILT ANIMATIONS ==========
     const initPointerAnimations = () => {
-        // --- Parallax floating shapes ---
-        const parallaxContainer = document.getElementById('parallaxContainer');
-        if (parallaxContainer && window.matchMedia("(min-width: 769px)").matches) {
-            const shapes = parallaxContainer.querySelectorAll('.floating-shape');
-            window.addEventListener('scroll', () => {
-                const scrollY = window.scrollY;
-                shapes.forEach(shape => {
-                    const speed = parseFloat(shape.dataset.speed) || 0.03;
-                    const movement = -(scrollY * speed);
-                    shape.style.transform = `translateY(${movement}px)`;
-                });
-            });
-        }
-
-        // --- Hero parallax on mouse move ---
         const hero = document.getElementById('hero');
-        const heroContent = hero.querySelector('.section-content');
-        if (heroContent && window.matchMedia("(min-width: 769px)").matches) {
-            hero.addEventListener('mousemove', (e) => {
-                const { clientX, clientY } = e;
-                const { offsetWidth, offsetHeight } = hero;
-                const xPos = (clientX / offsetWidth - 0.5) * 30; // 30 is the movement intensity
-                const yPos = (clientY / offsetHeight - 0.5) * 30;
-                heroContent.style.transform = `translateX(${-xPos}px) translateY(${-yPos}px)`;
-            });
-        }
-    };
+        const heroContent = hero?.querySelector('.section-content');
+        if (!heroContent || !window.matchMedia("(min-width: 769px)").matches) return;
 
+        let mouseX = 0, mouseY = 0;
+        let currentX = 0, currentY = 0;
+        const friction = 0.08; // Control smooth lag (lower = smoother/slower)
 
-    // ========== DYNAMIC UNIVERSE ==========
-    const initUniverse = () => {
-        const universe = document.getElementById('universe');
-        if (!universe) return;
+        window.addEventListener('mousemove', (e) => {
+            const { clientX, clientY } = e;
+            const { innerWidth, innerHeight } = window;
 
-        const starCount = 150; // Number of stars
-        for (let i = 0; i < starCount; i++) {
-            const star = document.createElement('div');
-            star.classList.add('star');
+            // Normalize coordinates to -1 to 1
+            mouseX = (clientX / innerWidth - 0.5) * 2;
+            mouseY = (clientY / innerHeight - 0.5) * 2;
+        });
 
-            // Random Position
-            const x = Math.random() * 100;
-            const y = Math.random() * 100;
+        const animateParallax = () => {
+            // Lerp logic
+            currentX += (mouseX - currentX) * friction;
+            currentY += (mouseY - currentY) * friction;
 
-            // Random Size
-            const size = Math.random() * 2 + 1; // 1px to 3px
+            const xPos = currentX * 25; // movement intensity
+            const yPos = currentY * 25;
 
-            // Random Animation Duration
-            const duration = Math.random() * 3 + 2; // 2s to 5s
-
-            star.style.left = `${x}%`;
-            star.style.top = `${y}%`;
-            star.style.width = `${size}px`;
-            star.style.height = `${size}px`;
-            star.style.setProperty('--twinkle-duration', `${duration}s`);
-
-            universe.appendChild(star);
-        }
-    };
-
-    // ========== SHOOTING STARS ==========
-    const initShootingStars = () => {
-        const container = document.getElementById('shooting-stars');
-        if (!container) return;
-
-        const createShootingStar = () => {
-            const star = document.createElement('div');
-            star.classList.add('shooting-star');
-
-            // Random starting position (top-right area)
-            const startX = Math.random() * 50 + 50; // 50-100%
-            const startY = Math.random() * 30; // 0-30%
-
-            star.style.left = `${startX}%`;
-            star.style.top = `${startY}%`;
-
-            // Random duration (1.5s to 3s)
-            const duration = Math.random() * 1.5 + 1.5;
-            star.style.animationDuration = `${duration}s`;
-
-            container.appendChild(star);
-
-            // Remove after animation
-            setTimeout(() => {
-                star.remove();
-            }, duration * 1000);
+            heroContent.style.transform = `translateX(${-xPos}px) translateY(${-yPos}px)`;
+            requestAnimationFrame(animateParallax);
         };
 
-        // Create shooting stars at random intervals
-        setInterval(() => {
-            if (Math.random() > 0.7) { // 30% chance every interval
-                createShootingStar();
-            }
-        }, 2000);
+        animateParallax();
+    };
 
-        // Create initial shooting star
-        createShootingStar();
+
+    // ========== PRELOADER LOGIC ==========
+    const initPreloader = () => {
+        const preloader = document.getElementById('preloader');
+        if (!preloader) return;
+
+        window.addEventListener('load', () => {
+            // Give a little extra time for the animations to play
+            setTimeout(() => {
+                preloader.classList.add('fade-out');
+
+                // Remove from DOM after fade animation
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 1000);
+            }, 1500);
+        });
     };
 
     // ========== PARTICLE CURSOR TRAIL ==========
@@ -332,11 +285,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize all modules
     initDarkMode();
+    initPreloader();
     initNavbar();
     initScrollAnimations();
     initPointerAnimations();
-    initUniverse();
-    initShootingStars();
     initParticleTrail();
     initSkillsAnimation();
 });
