@@ -1,0 +1,293 @@
+/* ========== TRADA PAGE STYLES ========== */
+:root {
+    --bg-deep: #05070a;
+    --text-primary: #ffffff;
+    --text-secondary: #b8b8b8;
+    --text-accent: #ffd700;
+    --text-accent-glow: rgba(255, 215, 0, 0.3);
+
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-uprank: rgba(255, 255, 255, 0.06);
+    --glass-border: rgba(255, 255, 255, 0.1);
+
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+/* ========== RESET & BASE ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-deep);
+    color: var(--text-primary);
+    line-height: 1.8;
+    overflow-x: hidden;
+}
+
+/* ========== BACKGROUND ========== */
+.space-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -5;
+    background-color: var(--bg-deep);
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(255, 215, 0, 0.02) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(255, 215, 0, 0.02) 0%, transparent 40%);
+}
+
+.space-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -4;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+    background-size: 50px 50px;
+    mask-image: radial-gradient(circle at center, black, transparent 90%);
+    pointer-events: none;
+}
+
+/* ========== PROGRESS BAR ========== */
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background: linear-gradient(90deg, #ffd700, #f7d767, #ffd700);
+    z-index: 9999;
+}
+
+/* ========== NAVIGATION ========== */
+#navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    background: rgba(5, 7, 10, 0.8);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--text-accent);
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.nav-links {
+    display: flex;
+    gap: 3rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 1.5px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--text-accent);
+}
+
+/* ========== HERO ========== */
+#hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-family: var(--font-heading);
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.hero-subtitle {
+    font-size: 1.4rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 3rem;
+    max-width: 800px;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+}
+
+.stat-item .stat-number {
+    font-size: 3rem;
+    color: var(--text-accent);
+    font-family: var(--font-heading);
+}
+
+.stat-item .stat-label {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: var(--text-secondary);
+}
+
+/* ========== SECTIONS ========== */
+section {
+    padding: 10rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-label {
+    color: var(--text-accent);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-size: 3.5rem;
+    font-family: var(--font-heading);
+    margin-bottom: 4rem;
+}
+
+/* ========== TEA GRID ========== */
+.tea-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+    max-width: 1200px;
+}
+
+.tea-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2.5rem;
+    transition: 0.4s;
+}
+
+.tea-card.card-wide {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    padding: 0;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tea-card.card-wide .card-content {
+    padding: 3rem;
+}
+
+.tea-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--text-accent);
+    background: var(--glass-uprank);
+}
+
+.icon-large {
+    font-size: 3rem;
+    color: var(--text-accent);
+    margin-bottom: 1.5rem;
+}
+
+/* ========== STORIES ========== */
+.story-placeholder {
+    text-align: center;
+    padding: 5rem;
+    border: 2px dashed var(--glass-border);
+    border-radius: 20px;
+    color: var(--text-secondary);
+}
+
+.story-placeholder i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.3;
+}
+
+/* ========== QUOTE ========== */
+.quote-container {
+    text-align: center;
+    max-width: 800px;
+}
+
+.quote-icon {
+    font-size: 3rem;
+    color: var(--text-accent);
+    opacity: 0.2;
+    margin-bottom: 2rem;
+}
+
+.quote-text {
+    font-size: 2rem;
+    font-style: italic;
+    font-family: var(--font-heading);
+    margin-bottom: 1.5rem;
+}
+
+/* ========== FOOTER ========== */
+footer {
+    padding: 4rem 2rem;
+    text-align: center;
+    border-top: 1px solid var(--glass-border);
+}
+
+.back-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+    padding: 1rem 2.5rem;
+    background: var(--text-accent);
+    color: #000;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+
+    .tea-grid,
+    .tea-card.card-wide {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-container {
+        gap: 2rem;
+    }
+}

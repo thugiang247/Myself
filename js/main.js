@@ -241,38 +241,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ========== SKILLS ANIMATION ==========
     const initSkillsAnimation = () => {
-        const skillItems = document.querySelectorAll('.skill-item');
+        const skillItems = document.querySelectorAll('.skill-tag');
 
         const skillObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
                     const item = entry.target;
-                    const progress = item.getAttribute('data-progress');
-                    const progressBar = item.querySelector('.skill-progress');
-                    const percentageText = item.querySelector('.skill-percentage');
 
                     // Stagger animation
                     setTimeout(() => {
                         item.classList.add('visible');
-
-                        // Animate progress bar
-                        setTimeout(() => {
-                            progressBar.style.width = progress + '%';
-
-                            // Animate percentage counter
-                            let currentProgress = 0;
-                            const duration = 1500;
-                            const increment = progress / (duration / 16);
-
-                            const counter = setInterval(() => {
-                                currentProgress += increment;
-                                if (currentProgress >= progress) {
-                                    currentProgress = progress;
-                                    clearInterval(counter);
-                                }
-                                percentageText.textContent = Math.round(currentProgress) + '%';
-                            }, 16);
-                        }, 200);
                     }, index * 100);
 
                     skillObserver.unobserve(item);
