@@ -7,7 +7,7 @@
     <title>Trà Đá Vỉa Hè | Portfolio</title>
     <!-- Fonts: Cormorant Garamond (Luxury Serif), Inter (Modern Sans-Serif) -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Sedgwick+Ave+Display&family=Patrick+Hand&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/trada.css">
@@ -31,8 +31,8 @@
         </div>
         <ul class="nav-links">
             <li><a href="index.html"><i class="fas fa-home"></i> Trang chủ</a></li>
-            <li><a href="#atmosphere">Không khí</a></li>
-            <li><a href="#stories">Chuyện vỉa hè</a></li>
+            <li><a href="#atmosphere">Vibe vỉa hè</a></li>
+            <li><a href="#stories">Góc hóng biến</a></li>
         </ul>
     </nav>
 
@@ -41,11 +41,39 @@
         <div class="hero-content">
             <h1 class="hero-title">Trà Đá Vỉa Hè</h1>
             <p class="hero-subtitle">
-                "Cứ thong thả mà sống" - Những giây phút tĩnh lặng giữa lòng phố thị náo nhiệt.
+                "Ngồi uống trà đá thì việc đ?ch gì phải vội!"
             </p>
+
+            <!-- Cardboard Menu Idea 1 -->
+            <div class="menu-carton">
+                <h3 class="menu-title">Menu Cực Phẩm</h3>
+                <div class="menu-item-list">
+                    <div class="menu-item">
+                        <span>Trà đá (Full Vibe)</span>
+                        <span class="price">5k</span>
+                    </div>
+                    <div class="menu-item">
+                        <span>Nhân trần (Mát gan)</span>
+                        <span class="price">5k</span>
+                    </div>
+                    <div class="menu-item">
+                        <span>Hạt hướng dương</span>
+                        <span class="price">10k</span>
+                    </div>
+                    <div class="menu-item">
+                        <span>Wifi chạy bằng cơm</span>
+                        <span class="price">Free</span>
+                    </div>
+                    <div class="menu-item">
+                        <span>Hóng biến / Tư vấn tình cảm</span>
+                        <span class="price">Free</span>
+                    </div>
+                </div>
+            </div>
+
             <div class="stats-container">
                 <div class="stat-item">
-                    <div class="stat-number">3k</div>
+                    <div class="stat-number">5k</div>
                     <div class="stat-label">Giá một ly</div>
                 </div>
                 <div class="stat-item">
@@ -66,29 +94,40 @@
     <!-- Atmosphere Section -->
     <section id="atmosphere">
         <div class="section-content">
-            <span class="section-label">Không gian</span>
-            <h2 class="section-title">Góc Nhìn Vỉa Hè</h2>
+            <span class="section-label" style="color: var(--neon-tea); text-shadow: 0 0 10px var(--neon-tea);">Phố không
+                ngủ</span>
+            <h2 class="section-title">Vibe Vỉa Hè</h2>
             <div class="tea-grid">
                 <div class="tea-card card-wide">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1544256718-3bcf237f3974?w=1200&q=80"
-                            alt="Góc phố thân quen">
+                        <img src="images/trada_hero.jpg" alt="Góc trà đá vỉa hè">
                     </div>
                     <div class="card-content">
-                        <h3>Nhịp Sống Chậm</h3>
-                        <p>Trà đá không chỉ là một thức uống, đó là một nét văn hóa. Nơi người ta có thể ngồi hàng giờ
-                            chỉ để ngắm dòng người qua lại.</p>
+                        <h3>Nhịp Sống "Chậm"</h3>
+                        <p>Trà đá không chỉ là một thức uống, đó là một nét văn hóa "ngồi đồng". Nơi người ta có thể
+                            quan sát cả thế giới vận hành chỉ qua một cái vỉa hè.</p>
                     </div>
                 </div>
                 <div class="tea-card">
-                    <div class="card-content">
+                    <div class="card-image"
+                        style="height: 200px; margin-bottom: 1.5rem; border-radius: 5px; overflow: hidden; background: rgba(255,255,255,0.05);">
+                        <img src="images/trada_morning.jpg" alt="Trà đá điếu cày"
+                            style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <div class="card-content" style="padding: 0;">
                         <i class="fas fa-cloud-sun icon-large"></i>
                         <h3>Sớm Mai</h3>
-                        <p>Hương trà nồng nàn quyện cùng sương sớm, khởi đầu một ngày mới bình yên.</p>
+                        <p>Hương trà nồng nàn quyện cùng sương sớm, khởi đầu một ngày mới bình yên bên vỉa hè quen
+                            thuộc.</p>
                     </div>
                 </div>
                 <div class="tea-card">
-                    <div class="card-content">
+                    <div class="card-image"
+                        style="height: 200px; margin-bottom: 1.5rem; border-radius: 5px; overflow: hidden;">
+                        <img src="images/trada_night.jpg" alt="Phố đêm tĩnh lặng"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="card-content" style="padding: 0;">
                         <i class="fas fa-moon icon-large"></i>
                         <h3>Đêm Muộn</h3>
                         <p>Khi thành phố dần đi ngủ, những quán trà đá vẫn là nơi trú chân của những tâm hồn không ngủ.
@@ -102,27 +141,75 @@
     <!-- Stories Placeholder -->
     <section id="stories">
         <div class="section-content">
-            <span class="section-label">Nhật ký</span>
-            <h2 class="section-title">Những Câu Chuyện Phiếm</h2>
+            <span class="section-label" style="color: var(--neon-chair); text-shadow: 0 0 10px var(--neon-chair);">Bát
+                quái vỉa hè</span>
+            <h2 class="section-title">Góc Hóng Biến</h2>
             <div class="stories-container">
-                <div class="story-placeholder">
-                    <i class="fas fa-edit"></i>
-                    <p>Nội dung đang được cập nhật...</p>
+                <div class="tea-grid">
+                    <div class="tea-card">
+                        <div class="card-content">
+                            <i class="fas fa-bullhorn icon-large" style="color: var(--neon-chair);"></i>
+                            <h3>Biến Đầu Ngõ</h3>
+                            <p>"Bà bán trà đá ở đồi cao biết nhiều hơn Google. Chỉ cần 5 phút ngồi đây, tôi sẽ biết lão
+                                A sắp lấy vợ, chị B vừa mua xe, và vì sao con chim nhà ông C lại đi lạc!"</p>
+                        </div>
+                    </div>
+                    <div class="tea-card">
+                        <div class="card-content">
+                            <i class="fas fa-user-secret icon-large" style="color: var(--neon-tea);"></i>
+                            <h3>Kỹ năng "Ngồi Đồng"</h3>
+                            <p>Làm sao để ngồi 3 tiếng với một cốc trà 5k mà không bị chủ quán lườm? Thật ra thì bạn
+                                ngồi đến đêm cũng được!</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Quote Section -->
-    <section id="quote-section">
-        <div class="quote-container">
-            <i class="fas fa-quote-left quote-icon"></i>
-            <p class="quote-text">
-                "Trà đá vỉa hè là nơi mà mọi khoảng cách xã hội đều bị xóa nhòa."
-            </p>
-            <p class="quote-author">— Một người yêu trà</p>
+    <!-- Quote/Wisdom Section -->
+    <section id="wisdom-section">
+        <div class="section-content">
+            <span class="section-label">Triết lý vỉa hè</span>
+            <h2 class="section-title">Sidewalk Wisdom</h2>
+            <div class="wisdom-grid">
+                <div class="wisdom-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <p>"Cuộc sống giống như ly trà đá, lúc đầu thì mát lạnh, lúc sau thì nhạt dần, nhưng nếu có thêm
+                        chút chuyện phiếm thì lúc nào cũng đậm đà."</p>
+                </div>
+                <div class="wisdom-card">
+                    <i class="fas fa-users"></i>
+                    <p>"Ở đây không có khoảng cách. Tổng tài và tôi đều ngồi chung một kiểu ghế, uống chung một thứ
+                        nước."</p>
+                </div>
+                <div class="wisdom-card">
+                    <i class="fas fa-clock"></i>
+                    <p>"Hà Nội không vội được đâu, nhưng nếu quán hết hạt hướng dương thì phải vội gọi thêm ngay."</p>
+                </div>
+            </div>
         </div>
     </section>
+
+
+
+    <!-- Lunar Tip Section -->
+    <section id="lunar-tip">
+        <div class="lunar-content">
+            <i class="fas fa-moon lunar-icon"></i>
+            <p class="lunar-text">
+                "Bạn hãy thử ngồi trà đá một mình vào những ngày rằm và phải ngồi chỗ có trăng."
+            </p>
+            <div class="lunar-glow"></div>
+        </div>
+    </section>
+
+    <!-- Secret Button Idea 5 -->
+    <button class="btn-steam" id="steamBtn" title="Xin thêm nước sôi">
+        <i class="fas fa-mug-hot"></i>
+        <span>Xin thêm nước sôi</span>
+    </button>
+    <div class="steam-overlay"></div>
 
     <!-- Footer -->
     <footer>
@@ -134,6 +221,7 @@
         </div>
     </footer>
 
+    <script src="js/trada_effects.js"></script>
     <script src="js/transitions.js"></script>
     <script src="js/cursor.js"></script>
 </body>

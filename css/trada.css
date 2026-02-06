@@ -14,6 +14,13 @@
 
     --font-heading: 'Cormorant Garamond', serif;
     --font-body: 'Inter', sans-serif;
+    --font-accent: 'Sedgwick Ave Display', cursive;
+    --font-hand: 'Patrick Hand', cursive;
+
+    /* Neon Accents Idea 4 */
+    --neon-tea: #2ecc71;
+    --neon-chair: #e74c3c;
+    --neon-sign: #f1c40f;
 }
 
 /* ========== RESET & BASE ========== */
@@ -123,18 +130,26 @@ body {
 }
 
 .hero-title {
-    font-size: clamp(3rem, 7vw, 6rem);
-    font-family: var(--font-heading);
+    font-size: clamp(4rem, 10vw, 8rem);
+    font-family: var(--font-accent);
     margin-bottom: 1.5rem;
-    color: var(--text-primary);
+    color: var(--text-accent);
+    transform: rotate(-3deg);
+    text-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5),
+        -2px -2px 0px rgba(255, 255, 255, 0.1);
+    display: inline-block;
 }
 
 .hero-subtitle {
-    font-size: 1.4rem;
-    color: var(--text-secondary);
-    font-style: italic;
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    font-family: var(--font-hand);
     margin-bottom: 3rem;
     max-width: 800px;
+    background: rgba(255, 215, 0, 0.1);
+    padding: 0.5rem 1rem;
+    transform: rotate(1deg);
+    border-left: 5px solid var(--text-accent);
 }
 
 .stats-container {
@@ -173,9 +188,12 @@ section {
 }
 
 .section-title {
-    font-size: 3.5rem;
-    font-family: var(--font-heading);
+    font-size: 4rem;
+    font-family: var(--font-accent);
     margin-bottom: 4rem;
+    color: #fff;
+    text-shadow: 3px 3px 0px var(--text-accent);
+    transform: rotate(-1.5deg);
 }
 
 /* ========== TEA GRID ========== */
@@ -189,11 +207,46 @@ section {
 .tea-card {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
-    border-radius: 20px;
+    border-radius: 5px;
+    /* Less rounded for a paper look */
     padding: 2.5rem;
     transition: 0.4s;
+    position: relative;
+    /* For tape effect */
+    box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.2);
 }
 
+/* Tape Effect Idea 2 */
+.tea-card::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    width: 120px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 10;
+}
+
+.tea-card:nth-child(even) {
+    transform: rotate(2deg);
+}
+
+.tea-card:nth-child(odd) {
+    transform: rotate(-2deg);
+}
+
+.tea-card:hover {
+    transform: scale(1.05) rotate(0deg) !important;
+    border-color: var(--text-accent);
+    background: var(--glass-uprank);
+    z-index: 20;
+}
+
+/* Restore missing styles */
 .tea-card.card-wide {
     grid-column: 1 / -1;
     display: grid;
@@ -213,10 +266,81 @@ section {
     padding: 3rem;
 }
 
-.tea-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--text-accent);
-    background: var(--glass-uprank);
+/* ========== CARDBOARD MENU SECTION ========== */
+.menu-carton {
+    background: #c5a059;
+    /* Cardboard brown */
+    background-image:
+        repeating-linear-gradient(45deg, transparent, transparent 1px, rgba(0, 0, 0, 0.03) 1px, rgba(0, 0, 0, 0.03) 2px),
+        url('https://www.transparenttextures.com/patterns/cardboard.png');
+    padding: 3rem;
+    border-radius: 5px;
+    box-shadow: 15px 15px 0px rgba(0, 0, 0, 0.3);
+    color: #432;
+    font-family: var(--font-hand);
+    max-width: 600px;
+    margin: 4rem auto;
+    position: relative;
+    transform: rotate(1deg);
+    border: 1px solid #a87;
+}
+
+.menu-carton::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    bottom: 10px;
+    left: 10px;
+    border: 2px dashed rgba(0, 0, 0, 0.1);
+    pointer-events: none;
+}
+
+.menu-title {
+    font-family: var(--font-accent);
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #432;
+    padding-bottom: 0.5rem;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
+}
+
+.menu-item .price {
+    font-weight: bold;
+    color: #822;
+    /* Dried ink red */
+}
+
+/* ========== WISDOM BLOCK ========== */
+.wisdom-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.wisdom-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 4px solid var(--neon-sign);
+    padding: 2rem;
+    font-family: var(--font-hand);
+    font-size: 1.4rem;
+    line-height: 1.4;
+}
+
+.wisdom-card i {
+    color: var(--neon-sign);
+    margin-bottom: 1rem;
+    display: block;
 }
 
 .icon-large {
@@ -289,5 +413,170 @@ footer {
 
     .stats-container {
         gap: 2rem;
+    }
+}
+
+/* ========== EFFECTS STYLES ========== */
+.sunflower-seed {
+    position: fixed;
+    pointer-events: none;
+    background: #333;
+    border-radius: 50% 50% 40% 40%;
+    border: 1px solid #555;
+    z-index: 10000;
+}
+
+.sunflower-seed::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    width: 20%;
+    height: 60%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+}
+
+.floating-chair {
+    position: fixed;
+    pointer-events: none;
+    z-index: -1;
+    filter: blur(1px);
+}
+
+/* Steam Effect Idea 5 */
+.steam-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(8px);
+    z-index: 9998;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease;
+}
+
+.steam-active .steam-overlay {
+    opacity: 1;
+    animation: steamFadeOut 3s forwards;
+}
+
+@keyframes steamFadeOut {
+    0% {
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.btn-steam {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--neon-tea);
+    color: #000;
+    border: none;
+    padding: 1rem;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    z-index: 1001;
+    font-size: 1.5rem;
+    box-shadow: 0 0 20px var(--neon-tea);
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-steam:hover {
+    transform: scale(1.1) rotate(15deg);
+    box-shadow: 0 0 30px var(--neon-tea);
+}
+
+.btn-steam span {
+    position: absolute;
+    right: 70px;
+    background: #000;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: 0.3s;
+    pointer-events: none;
+}
+
+.btn-steam:hover span {
+    opacity: 1;
+}
+
+/* ========== LUNAR TIP ========== */
+#lunar-tip {
+    padding: 10rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+}
+
+.lunar-content {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.lunar-icon {
+    font-size: 3rem;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    margin-bottom: 2rem;
+    animation: moonPulse 4s infinite ease-in-out;
+}
+
+.lunar-text {
+    font-family: var(--font-hand);
+    font-size: 2rem;
+    color: #fff;
+    line-height: 1.5;
+    font-style: italic;
+}
+
+.lunar-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 50%;
+    filter: blur(50px);
+    z-index: 0;
+}
+
+@keyframes moonPulse {
+
+    0%,
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scale(1.2) rotate(10deg);
+        opacity: 1;
     }
 }
