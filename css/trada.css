@@ -416,6 +416,78 @@ footer {
     }
 }
 
+/* ========== PERSONAL THOUGHT ========== */
+#personal-thought {
+    padding: 6rem 2rem;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.note-paper {
+    background: #fdf6e3;
+    /* Màu giấy cũ */
+    color: #332f21;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 4rem;
+    position: relative;
+    box-shadow:
+        10px 10px 0px rgba(0, 0, 0, 0.3),
+        inset 0 0 50px rgba(0, 0, 0, 0.05);
+    transform: rotate(-1deg);
+    border: 1px solid #dcd3b6;
+    transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.note-paper:hover {
+    transform: rotate(0deg) scale(1.02);
+    box-shadow: 20px 20px 0px rgba(0, 0, 0, 0.2);
+}
+
+.note-paper::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 40%;
+    width: 120px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transform: rotate(2deg);
+    z-index: 5;
+}
+
+.note-pen {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 1.5rem;
+    opacity: 0.2;
+    transform: rotate(45deg);
+}
+
+.note-content {
+    font-family: var(--font-hand);
+    font-size: 2.2rem;
+    line-height: 1.4;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.note-footer {
+    font-family: var(--font-hand);
+    font-size: 1.2rem;
+    text-align: right;
+    opacity: 0.6;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+    .note-content {
+        font-size: 1.6rem;
+    }
+}
+
 /* ========== EFFECTS STYLES ========== */
 .sunflower-seed {
     position: fixed;

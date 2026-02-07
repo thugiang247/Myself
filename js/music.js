@@ -250,30 +250,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const classicalSection = document.getElementById('classical-elegance');
         const vietnameseSection = document.getElementById('vietnamese-mix');
+        const body = document.body;
 
         const hideAllSections = () => {
             classicalSection.classList.add('hidden');
             vietnameseSection.classList.add('hidden');
+            body.classList.remove('era-classical', 'era-nostalgia', 'era-reflection');
         };
 
-        const toggleSection = (section) => {
+        const toggleSection = (section, eraClass) => {
             const isHidden = section.classList.contains('hidden');
             hideAllSections();
             if (isHidden) {
                 section.classList.remove('hidden');
+                body.classList.add(eraClass);
                 section.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         };
 
         if (classicalCard && classicalSection) {
-            classicalCard.addEventListener('click', () => {
-                toggleSection(classicalSection);
+            classicalCard.addEventListener('click', (e) => {
+                const allCards = document.querySelectorAll('.playlist-card');
+                allCards.forEach(c => {
+                    if (c !== classicalCard) c.classList.remove('active');
+                });
+                classicalCard.classList.toggle('active');
+                toggleSection(classicalSection, 'era-classical');
             });
         }
 
         if (vietnameseCard && vietnameseSection) {
-            vietnameseCard.addEventListener('click', () => {
-                toggleSection(vietnameseSection);
+            vietnameseCard.addEventListener('click', (e) => {
+                const allCards = document.querySelectorAll('.playlist-card');
+                allCards.forEach(c => {
+                    if (c !== vietnameseCard) c.classList.remove('active');
+                });
+                vietnameseCard.classList.toggle('active');
+                toggleSection(vietnameseSection, 'era-nostalgia');
             });
         }
     };

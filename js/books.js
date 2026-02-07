@@ -81,16 +81,98 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // ========== BOOK CARD INTERACTIONS ==========
+    // ========== BOOK CARD INTERACTIONS (3D TILT, MOBILE & FLIP) ==========
     const initBookCards = () => {
-        document.querySelectorAll('.book-card').forEach(card => {
-            card.addEventListener('mouseenter', function () {
-                this.style.zIndex = '10';
+        const cards = document.querySelectorAll('.book-card');
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+        cards.forEach(card => {
+            const book = card.querySelector('.book-3d-object');
+            if (!book) return;
+
+            // --- 1. Click to Flip/Open ---
+            card.addEventListener('click', function (e) {
+                if (e.target.closest('a, button')) return;
+
+                const isOpen = this.classList.contains('is-open');
+
+                // Close all other open books first
+                document.querySelectorAll('.book-card.is-open').forEach(c => {
+                    if (c !== this) c.classList.remove('is-open');
+                });
+
+                // Toggle this book
+                this.classList.toggle('is-open');
+
+                // Reset transform when closing
+                if (isOpen) {
+                    book.style.transform = `rotateY(-20deg) rotateX(5deg) scale(1)`;
+                } else {
+                    book.style.transform = `rotateY(0deg) rotateX(0deg) scale(1.1)`;
+                }
             });
 
-            card.addEventListener('mouseleave', function () {
-                this.style.zIndex = '1';
-            });
+            // --- 2. DESKTOP: Mouse Tilt ---
+            if (!isMobile) {
+                card.addEventListener('mousemove', function (e) {
+                    if (this.classList.contains('is-open')) return;
+
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateY = ((x - centerX) / centerX) * 25;
+                    const rotateX = ((centerY - y) / centerY) * 25;
+                    book.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg) scale(1.05)`;
+                    this.style.zIndex = '10';
+                });
+
+                card.addEventListener('mouseleave', function () {
+                    if (this.classList.contains('is-open')) return;
+                    book.style.transform = `rotateY(-20deg) rotateX(5deg) scale(1)`;
+                    this.style.zIndex = '1';
+                });
+            }
+
+            // --- 3. MOBILE: Touch & Scroll Interaction ---
+            else {
+                card.addEventListener('touchmove', function (e) {
+                    if (this.classList.contains('is-open')) return;
+                    const touch = e.touches[0];
+                    const rect = this.getBoundingClientRect();
+                    const x = touch.clientX - rect.left;
+                    const y = touch.clientY - rect.top;
+
+                    if (x > 0 && x < rect.width && y > 0 && y < rect.height) {
+                        const centerX = rect.width / 2;
+                        const centerY = rect.height / 2;
+                        const rotateY = ((x - centerX) / centerX) * 20;
+                        const rotateX = ((centerY - y) / centerY) * 20;
+                        book.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg) scale(1.05)`;
+                    }
+                }, { passive: true });
+
+                card.addEventListener('touchend', function () {
+                    if (this.classList.contains('is-open')) return;
+                    setTimeout(() => {
+                        book.style.transform = `rotateY(-20deg) rotateX(5deg) scale(1)`;
+                    }, 500);
+                });
+
+                window.addEventListener('scroll', () => {
+                    if (card.classList.contains('is-open')) return;
+                    const rect = card.getBoundingClientRect();
+                    const viewHeight = window.innerHeight;
+                    const cardCenter = rect.top + rect.height / 2;
+                    const scrollDist = (cardCenter - viewHeight / 2) / (viewHeight / 2);
+                    const autoRotateY = -20 + (scrollDist * 20);
+
+                    if (rect.top < viewHeight && rect.bottom > 0) {
+                        book.style.transform = `rotateY(${autoRotateY}deg) rotateX(5deg)`;
+                    }
+                }, { passive: true });
+            }
         });
     };
 

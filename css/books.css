@@ -315,30 +315,160 @@ section {
     overflow: hidden;
     transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
     box-shadow: var(--shadow-soft);
+    position: relative;
+    z-index: 1;
 }
 
-.book-card:hover {
-    transform: translateY(-15px) scale(1.02);
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.2);
-    border-color: rgba(255, 215, 0, 0.4);
+.book-card.is-open {
+    z-index: 100 !important;
 }
 
 .book-cover-container {
     position: relative;
     width: 100%;
-    height: 400px;
+    height: 450px;
+    perspective: 2000px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.book-3d-object {
+    position: relative;
+    width: 260px;
+    height: 380px;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    transform: rotateY(-20deg) rotateX(5deg);
+    cursor: pointer;
+}
+
+.book-card.is-open .book-3d-object {
+    transform: rotateY(0deg) rotateX(0deg) scale(1.1);
+}
+
+/* COVER GROUP */
+.book-3d-cover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transform-origin: left;
+    z-index: 10;
+}
+
+.book-card.is-open .book-3d-cover {
+    transform: rotateY(-160deg);
+}
+
+.book-3d-front,
+.book-3d-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 2px 5px 5px 2px;
+}
+
+.book-3d-front {
+    background: #222;
+    z-index: 2;
+}
+
+.book-3d-back {
+    background: #f0f0f0;
+    transform: rotateY(180deg);
+    box-shadow: inset 10px 0 30px rgba(0, 0, 0, 0.1);
+    border-left: 1px solid #ddd;
+}
+
+/* INNER PAGES */
+.book-3d-pages {
+    position: absolute;
+    width: 98%;
+    height: 98%;
+    top: 1%;
+    left: 1%;
+    background: #fff;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    transform: translateZ(-2px);
+    z-index: 1;
     overflow: hidden;
+    border-radius: 0 3px 3px 0;
+}
+
+.book-inner-content {
+    padding: 2.5rem 2rem;
+    color: #333;
+    opacity: 0;
+    transition: opacity 0.5s ease 0.4s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.book-card.is-open .book-inner-content {
+    opacity: 1;
+}
+
+.book-inner-content .book-title {
+    font-size: 1.6rem !important;
+    margin-bottom: 0.5rem;
+    color: #111 !important;
+    font-family: var(--font-heading);
+    border-bottom: 2px solid var(--text-accent);
+    padding-bottom: 0.5rem;
+}
+
+.book-inner-content .book-author {
+    font-size: 1rem;
+    color: var(--text-accent);
+    font-style: italic;
+    margin-bottom: 1.5rem;
+}
+
+.book-inner-content .book-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.book-inner-content .book-meta {
+    margin-top: auto;
+    display: flex;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: #777;
+}
+
+.book-instruction {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #999;
+    margin-top: 1rem;
+    text-align: center;
+    border-top: 1px solid #eee;
+    padding-top: 1rem;
+}
+
+.book-3d-side {
+    position: absolute;
+    width: 20px;
+    height: 100%;
+    background: #111;
+    left: 0;
+    transform: rotateY(-90deg);
+    transform-origin: left;
 }
 
 .book-cover {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.8s ease;
-}
-
-.book-card:hover .book-cover {
-    transform: scale(1.1);
 }
 
 .book-overlay {
@@ -355,7 +485,7 @@ section {
     transition: opacity 0.4s ease;
 }
 
-.book-card:hover .book-overlay {
+.book-card:hover:not(.is-open) .book-overlay {
     opacity: 1;
 }
 
@@ -513,31 +643,124 @@ footer {
     box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
 }
 
+/* ========== CLICK HINTS & INSTRUCTIONS ========== */
+.click-instruction {
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    color: var(--text-accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.click-instruction i {
+    font-size: 1rem;
+    animation: pulseMouse 2s infinite;
+}
+
+@keyframes pulseMouse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.click-hint {
+    background: var(--text-accent);
+    color: #000;
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 1rem;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.book-card:hover:not(.is-open) .click-hint {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.click-hint i {
+    animation: bounceRight 0.8s infinite alternate;
+}
+
+@keyframes bounceRight {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(5px);
+    }
+}
+
 /* ========== RESPONSIVE ========== */
 @media (max-width: 768px) {
     .books-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 3rem;
+        padding: 0 1rem;
     }
 
-    .stats-container {
-        gap: 2rem;
+    .book-card {
+        max-width: 320px;
+        margin: 0 auto;
     }
 
-    .stat-number {
-        font-size: 2rem;
+    .book-cover-container {
+        height: 400px;
+    }
+
+    .book-3d-object {
+        width: 200px;
+        height: 300px;
+    }
+
+    .book-inner-content {
+        padding: 1.5rem;
+    }
+
+    .book-inner-content .book-title {
+        font-size: 1.3rem !important;
+    }
+
+    .book-inner-content .book-description {
+        font-size: 0.85rem;
     }
 
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
     }
 
     .section-title {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
     }
 
     .quote-text {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
+        white-space: normal;
     }
 
     #navbar {
@@ -545,7 +768,7 @@ footer {
     }
 
     .nav-links {
-        gap: 1.5rem;
-        font-size: 0.85rem;
+        gap: 1rem;
+        font-size: 0.8rem;
     }
 }
