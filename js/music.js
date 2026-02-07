@@ -52,64 +52,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ========== MUSIC PLAYER ==========
     const initMusicPlayer = () => {
-        const playBtn = document.querySelector('.play-btn');
-        const vinylRecord = document.querySelector('.vinyl-record');
         const volumeSlider = document.querySelector('.volume-slider');
         const volumeValue = document.querySelector('.volume-value');
-        const progressFill = document.querySelector('.progress-fill');
-        const timeCurrent = document.querySelector('.time-current');
 
-        let isPlaying = false;
-        let progress = 0;
-        let interval;
-
-        const formatTime = (seconds) => {
-            const mins = Math.floor(seconds / 60);
-            const secs = Math.floor(seconds % 60);
-            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-        };
-
-        // Play/Pause button
-        if (playBtn) {
-            playBtn.addEventListener('click', () => {
-                isPlaying = !isPlaying;
-                const icon = playBtn.querySelector('i');
-
-                if (isPlaying) {
-                    icon.classList.remove('fa-play');
-                    icon.classList.add('fa-pause');
-                    vinylRecord?.classList.add('playing');
-
-                    // Simulate progress
-                    interval = setInterval(() => {
-                        progress += 0.1;
-                        if (progress > 100) progress = 0;
-                        if (progressFill) progressFill.style.width = `${progress}%`;
-
-                        // Fake time update (assuming 3:45 duration)
-                        const totalSeconds = 225;
-                        const currentSeconds = (progress / 100) * totalSeconds;
-                        if (timeCurrent) timeCurrent.textContent = formatTime(currentSeconds);
-
-                    }, 100);
-
-                } else {
-                    icon.classList.remove('fa-pause');
-                    icon.classList.add('fa-play');
-                    vinylRecord?.classList.remove('playing');
-                    clearInterval(interval);
-                }
-            });
-        }
-
-        // Volume control
+        // Volume control UI update
         if (volumeSlider && volumeValue) {
             volumeSlider.addEventListener('input', (e) => {
                 volumeValue.textContent = e.target.value + '%';
             });
         }
 
-        // Control buttons hover effects
+        // Control buttons click effects (Visual only)
         document.querySelectorAll('.control-btn').forEach(btn => {
             btn.addEventListener('click', function () {
                 this.style.transform = 'scale(0.9)';

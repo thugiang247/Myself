@@ -19,6 +19,10 @@
     <!-- Progress Bar -->
     <div class="progress-bar" id="progressBar"></div>
 
+    <!-- Hidden YouTube Player -->
+    <div id="youtube-player-container"
+        style="position: absolute; width: 0; height: 0; opacity: 0; pointer-events: none;"></div>
+
     <!-- Space Background -->
     <div class="space-background"></div>
     <div class="space-overlay"></div>
@@ -142,7 +146,7 @@
 
             <div class="tracks-list">
                 <!-- Track 1: Swan Lake -->
-                <div class="track-item">
+                <div class="track-item" data-video-id="vAeRzW98IFw">
                     <div class="track-number">1</div>
                     <div class="track-thumbnail">
                         <i class="fas fa-music"></i>
@@ -151,11 +155,13 @@
                         <h4 class="track-name">Swan Lake (Hồ Thiên Nga)</h4>
                         <p class="track-artist-name">Pyotr Ilyich Tchaikovsky</p>
                     </div>
-
+                    <button class="track-play-btn">
+                        <i class="fas fa-play"></i>
+                    </button>
                 </div>
 
                 <!-- Track 2: Moonlight Sonata -->
-                <div class="track-item">
+                <div class="track-item" data-video-id="sbTVZMJ9Z2I">
                     <div class="track-number">2</div>
                     <div class="track-thumbnail">
                         <i class="fas fa-music"></i>
@@ -164,11 +170,13 @@
                         <h4 class="track-name">Moonlight Sonata</h4>
                         <p class="track-artist-name">Ludwig van Beethoven</p>
                     </div>
-
+                    <button class="track-play-btn">
+                        <i class="fas fa-play"></i>
+                    </button>
                 </div>
 
                 <!-- Track 3: Clair de Lune -->
-                <div class="track-item">
+                <div class="track-item" data-video-id="WNcsUNKlAKw">
                     <div class="track-number">3</div>
                     <div class="track-thumbnail">
                         <i class="fas fa-music"></i>
@@ -177,11 +185,13 @@
                         <h4 class="track-name">Clair de Lune</h4>
                         <p class="track-artist-name">Claude Debussy</p>
                     </div>
-
+                    <button class="track-play-btn">
+                        <i class="fas fa-play"></i>
+                    </button>
                 </div>
 
                 <!-- Track 4: Nocturne Op. 9 No. 2 -->
-                <div class="track-item">
+                <div class="track-item" data-video-id="9E6b3swbnWg">
                     <div class="track-number">4</div>
                     <div class="track-thumbnail">
                         <i class="fas fa-music"></i>
@@ -190,7 +200,9 @@
                         <h4 class="track-name">Nocturne Op. 9 No. 2</h4>
                         <p class="track-artist-name">Frédéric Chopin</p>
                     </div>
-
+                    <button class="track-play-btn">
+                        <i class="fas fa-play"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -204,7 +216,7 @@
 
             <div class="tracks-list">
                 <!-- Track 1: Chuyện hoa sim -->
-                <div class="track-item">
+                <div class="track-item" data-video-id="1mqVmL9UGws">
                     <div class="track-number">1</div>
                     <div class="track-thumbnail">
                         <i class="fas fa-music"></i>
@@ -213,11 +225,13 @@
                         <h4 class="track-name">Chuyện hoa sim</h4>
                         <p class="track-artist-name">Như Quỳnh / Tuấn Vũ</p>
                     </div>
-
+                    <button class="track-play-btn">
+                        <i class="fas fa-play"></i>
+                    </button>
                 </div>
 
                 <!-- Track 2: Liên khúc Tuấn Vũ 5 -->
-                <div class="track-item">
+                <div class="track-item" data-video-id="b7CXcDywDYo">
                     <div class="track-number">2</div>
                     <div class="track-thumbnail">
                         <i class="fas fa-microphone-alt"></i>
@@ -226,11 +240,13 @@
                         <h4 class="track-name">Liên khúc Tuấn Vũ 5</h4>
                         <p class="track-artist-name">Tuấn Vũ</p>
                     </div>
-
+                    <button class="track-play-btn">
+                        <i class="fas fa-play"></i>
+                    </button>
                 </div>
 
                 <!-- Track 3: Chị tôi -->
-                <div class="track-item">
+                <div class="track-item" data-video-id="Hc-NN30nj0A">
                     <div class="track-number">3</div>
                     <div class="track-thumbnail">
                         <i class="fas fa-guitar"></i>
@@ -239,11 +255,12 @@
                         <h4 class="track-name">Chị tôi</h4>
                         <p class="track-artist-name">Trần Tiến / Bằng Kiều</p>
                     </div>
-
+                    <button class="track-play-btn">
+                        <i class="fas fa-play"></i>
+                    </button>
                 </div>
 
-                <!-- Track 4: Em ơi Hà Nội phố -->
-                <div class="track-item">
+                <div class="track-item" data-video-id="FTYOG71XaKY">
                     <div class="track-number">4</div>
                     <div class="track-thumbnail">
                         <i class="fas fa-music"></i>
@@ -252,11 +269,14 @@
                         <h4 class="track-name">Em ơi Hà Nội phố</h4>
                         <p class="track-artist-name">Bằng Kiều / Hồng Nhung</p>
                     </div>
-
+                    <div class="track-duration">5:24</div>
+                    <button class="track-play-btn">
+                        <i class="fas fa-play"></i>
+                    </button>
                 </div>
 
                 <!-- Track 5: Vĩnh biệt màu xanh -->
-                <div class="track-item">
+                <div class="track-item" data-video-id="hp8a_dYEUmw">
                     <div class="track-number">5</div>
                     <div class="track-thumbnail">
                         <i class="fas fa-music"></i>
@@ -265,11 +285,13 @@
                         <h4 class="track-name">Vĩnh biệt màu xanh</h4>
                         <p class="track-artist-name">Thanh Tuyền / Chế Linh</p>
                     </div>
-
+                    <button class="track-play-btn">
+                        <i class="fas fa-play"></i>
+                    </button>
                 </div>
 
                 <!-- Track 6: Khói thuốc đợi chờ -->
-                <div class="track-item">
+                <div class="track-item" data-video-id="3k4ncOXED8w">
                     <div class="track-number">6</div>
                     <div class="track-thumbnail">
                         <i class="fas fa-music"></i>
@@ -278,11 +300,13 @@
                         <h4 class="track-name">Khói thuốc đợi chờ</h4>
                         <p class="track-artist-name">Jimmii Nguyễn</p>
                     </div>
-
+                    <button class="track-play-btn">
+                        <i class="fas fa-play"></i>
+                    </button>
                 </div>
 
                 <!-- Track 7: Chuyện người đan áo -->
-                <div class="track-item">
+                <div class="track-item" data-video-id="FkZ8ruz8ozg">
                     <div class="track-number">7</div>
                     <div class="track-thumbnail">
                         <i class="fas fa-music"></i>
@@ -291,11 +315,13 @@
                         <h4 class="track-name">Chuyện người đan áo</h4>
                         <p class="track-artist-name">Giao Linh</p>
                     </div>
-
+                    <button class="track-play-btn">
+                        <i class="fas fa-play"></i>
+                    </button>
                 </div>
 
                 <!-- Track 8: Tìm em câu ví sông Lam -->
-                <div class="track-item">
+                <div class="track-item" data-video-id="hD7cLb4DhGo">
                     <div class="track-number">8</div>
                     <div class="track-thumbnail">
                         <i class="fas fa-music"></i>
@@ -304,7 +330,9 @@
                         <h4 class="track-name">Tìm em câu ví sông Lam</h4>
                         <p class="track-artist-name">Anh Thơ / Trọng Tấn</p>
                     </div>
-
+                    <button class="track-play-btn">
+                        <i class="fas fa-play"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -355,6 +383,43 @@
         </div>
     </footer>
 
+    <!-- Floating Mini Player -->
+    <div id="floating-player" class="floating-player">
+        <div class="mini-progress-bar">
+            <div class="mini-progress-fill"></div>
+        </div>
+        <div class="mini-player-content">
+            <div class="mini-info">
+                <div class="mini-vinyl-wrap">
+                    <div class="mini-vinyl"></div>
+                </div>
+                <div class="mini-track-details">
+                    <div class="mini-track-name">Chưa chọn bài hát</div>
+                    <div class="mini-track-artist">—</div>
+                </div>
+            </div>
+
+            <div class="mini-controls">
+                <button class="mini-btn prev-btn" title="Bài trước">
+                    <i class="fas fa-step-backward"></i>
+                </button>
+                <button class="mini-btn play-pause-btn" title="Phát/Tạm dừng">
+                    <i class="fas fa-play"></i>
+                </button>
+                <button class="mini-btn next-btn" title="Bài sau">
+                    <i class="fas fa-step-forward"></i>
+                </button>
+            </div>
+
+            <div class="mini-volume">
+                <i class="fas fa-volume-up"></i>
+                <input type="range" class="mini-volume-slider" min="0" max="100" value="100">
+            </div>
+        </div>
+    </div>
+
+    <script src="js/youtube-player.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
     <script src="js/music.js"></script>
     <script src="js/transitions.js"></script>
     <script src="js/cursor.js"></script>
