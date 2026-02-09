@@ -301,7 +301,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    // ========== NAVBAR BEHAVIOR ==========
+    const initNavbar = () => {
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinksContainer = document.getElementById('navLinks');
+
+        if (!menuToggle || !navLinksContainer) return;
+
+        menuToggle.addEventListener('click', () => {
+            navLinksContainer.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close menu on link click
+        const navLinks = document.querySelectorAll('.nav-links a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinksContainer.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+    };
+
     // Initialize all modules
+    initNavbar();
     initProgressBar();
     initSmoothScroll();
     initScrollIndicator();

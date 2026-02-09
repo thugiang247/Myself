@@ -1172,12 +1172,22 @@ footer {
     }
 
     #navbar {
-        display: none;
+        padding: 1rem 1.5rem;
+    }
+
+    .logo {
+        font-size: 1.5rem;
     }
 
     .nav-links {
         gap: 1.5rem;
         font-size: 0.85rem;
+    }
+
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+        z-index: 1002;
     }
 
     .track-item {
