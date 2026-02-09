@@ -3,26 +3,32 @@ let ytPlayer;
 let isYtAPIReady = false;
 let currentPlaylistTracks = [];
 let currentTrackIndex = -1;
+let pendingPlayRequest = null;
 
 console.log("YouTube Player Script Loaded");
 
 // YouTube IFrame API calls this when ready
 window.onYouTubeIframeAPIReady = function () {
     console.log("YouTube IFrame API Ready signal received");
+    const playerVars = {
+        'autoplay': 0,
+        'controls': 0,
+        'disablekb': 1,
+        'fs': 0,
+        'modestbranding': 1,
+        'rel': 0,
+        'showinfo': 0
+    };
+
+    if (window.location.protocol !== 'file:') {
+        playerVars['origin'] = window.location.origin;
+    }
+
     ytPlayer = new YT.Player('youtube-player-container', {
-        height: '0',
-        width: '0',
+        height: '1',
+        width: '1',
         videoId: '',
-        playerVars: {
-            'autoplay': 0,
-            'controls': 0,
-            'disablekb': 1,
-            'fs': 0,
-            'modestbranding': 1,
-            'rel': 0,
-            'showinfo': 0,
-            'origin': window.location.origin
-        },
+        playerVars: playerVars,
         events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange,
@@ -34,10 +40,37 @@ window.onYouTubeIframeAPIReady = function () {
 function onPlayerReady(event) {
     isYtAPIReady = true;
     console.log("YouTube Player Object Created & Ready");
+
+    if (pendingPlayRequest) {
+        console.log("Processing pending play request...");
+        YouTubeAudio.play(
+            pendingPlayRequest.videoId,
+            pendingPlayRequest.title,
+            pendingPlayRequest.artist,
+            pendingPlayRequest.startSeconds
+        );
+        pendingPlayRequest = null;
+    }
 }
+
+let skipErrorTimeout;
 
 function onPlayerError(event) {
     console.error("YouTube Player Error:", event.data);
+
+    // Error 150/101 means embedding not allowed
+    if (event.data === 150 || event.data === 101 || event.data === 5) {
+        console.warn("Video restricted/unavailable. Skipping to next track in 3s...");
+
+        // Visual feedback
+        const mainTitle = document.querySelector('.track-title');
+        if (mainTitle) mainTitle.textContent = "Video không khả dụng. Đang chuyển bài...";
+
+        clearTimeout(skipErrorTimeout);
+        skipErrorTimeout = setTimeout(() => {
+            YouTubeAudio.next();
+        }, 3000);
+    }
 }
 
 function onPlayerStateChange(event) {
@@ -119,12 +152,8 @@ function formatYtTime(seconds) {
 const YouTubeAudio = {
     play: (videoId, title, artist, startSeconds = 0) => {
         console.log("Attempting to play Video ID:", videoId, "from", startSeconds, "s");
-        if (!isYtAPIReady) {
-            console.warn("YouTube API not ready yet!");
-            return;
-        }
 
-        // Update All UI info
+        // Update All UI info immediately for better UX
         const mainTitle = document.querySelector('.track-title');
         const mainArtist = document.querySelector('.track-artist');
         const miniTitle = document.querySelector('.mini-track-name');
@@ -134,6 +163,12 @@ const YouTubeAudio = {
         if (mainArtist) mainArtist.textContent = artist;
         if (miniTitle) miniTitle.textContent = title;
         if (miniArtist) miniArtist.textContent = artist;
+
+        if (!isYtAPIReady) {
+            console.log("YouTube Player is loading... Video queued for auto-play.");
+            pendingPlayRequest = { videoId, title, artist, startSeconds };
+            return;
+        }
 
         ytPlayer.loadVideoById({
             videoId: videoId,
