@@ -1,0 +1,93 @@
+/* Glitch Reality Styles */
+
+.glitch-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 9999;
+    display: none;
+    pointer-events: none;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.glitch-overlay.active {
+    display: flex;
+    animation: glitch-flash 0.2s steps(2) infinite;
+}
+
+.glitch-text {
+    color: #ff0055;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 5rem;
+    text-transform: uppercase;
+    font-weight: 900;
+    text-shadow: 2px 2px #00ffff, -2px -2px #ffff00;
+    opacity: 0.8;
+}
+
+.glitch-subtext {
+    color: #fff;
+    font-size: 1.5rem;
+    letter-spacing: 10px;
+    margin-top: 20px;
+}
+
+/* Base Body Glitch */
+body.glitch-active {
+    filter: invert(1) hue-rotate(180deg);
+    overflow: hidden;
+}
+
+body.glitch-active::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(0deg,
+            rgba(0, 0, 0, 0.1),
+            rgba(0, 0, 0, 0.1) 1px,
+            transparent 1px,
+            transparent 2px);
+    z-index: 10000;
+    pointer-events: none;
+}
+
+@keyframes glitch-flash {
+    0% {
+        transform: translate(2px, 2px);
+        opacity: 1;
+    }
+
+    25% {
+        transform: translate(-2px, -2px);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: translate(-3px, 2px);
+        clip-path: inset(10% 0 30% 0);
+    }
+
+    75% {
+        transform: translate(3px, -2px);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+
+/* RGB Split for elements */
+body.glitch-active * {
+    text-shadow: 2px 0 red, -2px 0 blue !important;
+}
