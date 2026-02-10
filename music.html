@@ -7,7 +7,7 @@
     <title>Âm Nhạc | Portfolio</title>
     <!-- Fonts: Cormorant Garamond (Luxury Serif), Inter (Modern Sans-Serif) -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Patrick+Hand&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/music.css">
@@ -34,15 +34,25 @@
     <canvas id="visualizer"></canvas>
 
     <!-- Navigation -->
-    <nav id="navbar">
+    <nav id="navbar" class="subpage-nav">
         <div class="logo">
-            <i class="fas fa-music"></i>
-            Âm Nhạc
+            <span class="logo-text" data-crazy="logo">Âm Nhạc</span>
         </div>
+
+        <!-- Persona Switcher -->
+        <div class="persona-switch-container">
+            <span class="switch-label">Nghiêm túc</span>
+            <label class="switch">
+                <input type="checkbox" id="personaToggle">
+                <span class="slider round"></span>
+            </label>
+            <span class="switch-label">Bất ổn</span>
+        </div>
+
         <ul class="nav-links" id="navLinks">
-            <li><a href="index.html"><i class="fas fa-home"></i> Trang chủ</a></li>
-            <li><a href="#playlists">Playlists</a></li>
-            <li><a href="#favorites">Yêu thích</a></li>
+            <li><a href="index.html" data-crazy="nav-home-sub">Trang chủ</a></li>
+            <li><a href="books.html" data-crazy="nav-books">Sách</a></li>
+            <li><a href="music.html" class="active" data-crazy="nav-music">Âm nhạc</a></li>
         </ul>
         <button class="menu-toggle" id="menuToggle">
             <i class="fas fa-bars"></i>
@@ -52,8 +62,8 @@
     <!-- Hero Section -->
     <section id="hero">
         <div class="hero-content">
-            <h1 class="hero-title">Thế Giới Âm Nhạc</h1>
-            <p class="hero-subtitle">
+            <h1 class="hero-title" data-crazy="music-hero-title">Thế Giới Âm Nhạc</h1>
+            <p class="hero-subtitle" data-crazy="music-hero-sub">
                 "Âm nhạc là ngôn ngữ của tâm hồn" - Khám phá những giai điệu làm tôi cảm thấy sống động
             </p>
 
@@ -408,6 +418,8 @@
     <script src="js/youtube-player.js"></script>
     <script src="https://www.youtube.com/iframe_api"></script>
     <script src="js/navigation.js"></script>
+    <script src="js/mood-switcher.js"></script>
+    <script src="js/persona.js"></script>
     <script src="js/music.js"></script>
     <script src="js/transitions.js"></script>
     <script src="js/cursor.js"></script>

@@ -7,7 +7,7 @@
     <title>Thể Thao | Portfolio</title>
     <!-- Fonts -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;700;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;700;900&family=Patrick+Hand&display=swap"
         rel="stylesheet">
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -24,16 +24,26 @@
     <div class="grid-overlay"></div>
 
     <!-- Navigation -->
-    <nav id="navbar">
+    <nav id="navbar" class="subpage-nav">
         <div class="logo">
-            <i class="fas fa-running"></i>
-            <span>SPORT<span style="color: var(--accent-secondary)">MODE</span></span>
+            <span class="logo-text" data-crazy="logo">SPORT<span
+                    style="color: var(--accent-secondary)">MODE</span></span>
         </div>
+
+        <!-- Persona Switcher -->
+        <div class="persona-switch-container">
+            <span class="switch-label">Nghiêm túc</span>
+            <label class="switch">
+                <input type="checkbox" id="personaToggle">
+                <span class="slider round"></span>
+            </label>
+            <span class="switch-label">Bất ổn</span>
+        </div>
+
         <ul class="nav-links" id="navLinks">
-            <li><a href="index.html">Trang chủ</a></li>
-            <li><a href="music.html">Âm nhạc</a></li>
-            <li><a href="#stats">Thành tích</a></li>
-            <li><a href="#gallery">Hoạt động</a></li>
+            <li><a href="index.html" data-crazy="nav-home-sub">Trang chủ</a></li>
+            <li><a href="music.html" data-crazy="nav-music">Âm nhạc</a></li>
+            <li><a href="#gallery" data-crazy="nav-gallery">Hoạt động</a></li>
         </ul>
         <button class="menu-toggle" id="menuToggle">
             <i class="fas fa-bars"></i>
@@ -45,8 +55,8 @@
         <div class="hero-ring"></div>
         <div class="hero-content">
             <div class="hero-badge">Lifestyle</div>
-            <h1 class="hero-title">Pushing <br>Limits</h1>
-            <p class="hero-subtitle">
+            <h1 class="hero-title" data-crazy="sports-hero-title">Pushing <br>Limits</h1>
+            <p class="hero-subtitle" data-crazy="sports-hero-sub">
                 "Kỷ luật là cầu nối giữa mục tiêu và thành tựu." <br>
                 Chạy bộ • Gym • Tự do
             </p>
@@ -147,6 +157,8 @@
     </footer>
 
     <script src="js/navigation.js"></script>
+    <script src="js/mood-switcher.js"></script>
+    <script src="js/persona.js"></script>
     <script src="js/sports.js"></script>
     <script src="js/transitions.js"></script>
     <script src="js/cursor.js"></script>
