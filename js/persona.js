@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Define the "Crazy" content mapping
     const crazyContent = {
         // Nav
-        'logo': "Portfolio Của Tui",
+        'logo': "Minh",
         'nav-home': "Nhà",
         'nav-about': "Tui là ai?",
         'nav-skills': "Chiêu thức",
