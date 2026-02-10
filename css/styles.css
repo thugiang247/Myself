@@ -1441,15 +1441,68 @@ body.mode-crazy .highlight {
 }
 
 @media (max-width: 768px) {
+    #navbar {
+        padding: 0.8rem 1.2rem;
+        justify-content: space-between;
+    }
+
+    .logo {
+        font-size: 1.3rem;
+        max-width: 60%;
+    }
+
     .persona-switch-container {
-        position: absolute;
-        top: 20px;
-        right: 60px;
-        /* Next to hamburger menu */
-        margin: 0;
+        position: relative;
+        top: 0;
+        right: 0;
+        margin: 0 10px 0 auto;
+        gap: 5px;
     }
 
     .switch-label {
         display: none;
+    }
+
+    .switch {
+        width: 38px;
+        height: 20px;
+    }
+
+    .slider:before {
+        height: 14px;
+        width: 14px;
+        left: 2px;
+        bottom: 2px;
+    }
+
+    input:checked+.slider:before {
+        transform: translateX(18px);
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background: rgba(5, 7, 10, 0.98);
+        backdrop-filter: blur(30px) saturate(200%);
+        -webkit-backdrop-filter: blur(30px) saturate(200%);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 1001;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .menu-toggle {
+        display: block;
+        z-index: 1002;
+        margin-left: 0;
     }
 }
