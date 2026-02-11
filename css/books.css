@@ -287,7 +287,8 @@ section {
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
     transform: translateZ(-2px);
     z-index: 1;
-    overflow: hidden;
+    overflow: visible;
+    /* Changed to allow inner content scroll to be visible */
     border-radius: 0 3px 3px 0;
 }
 
@@ -299,6 +300,29 @@ section {
     height: 100%;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--text-accent) transparent;
+}
+
+/* Custom scrollbar for book pages */
+.book-inner-content::-webkit-scrollbar {
+    width: 4px;
+}
+
+.book-inner-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.book-inner-content::-webkit-scrollbar-thumb {
+    background: var(--text-accent);
+    border-radius: 10px;
+    opacity: 0.5;
+}
+
+.book-inner-content::-webkit-scrollbar-thumb:hover {
+    background: #b8860b;
 }
 
 .book-card.is-open .book-inner-content {

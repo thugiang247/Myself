@@ -92,22 +92,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // --- 1. Click to Flip/Open ---
             card.addEventListener('click', function (e) {
+                // Ignore clicks on links/buttons
                 if (e.target.closest('a, button')) return;
 
                 const isOpen = this.classList.contains('is-open');
+                const clickedContent = e.target.closest('.book-inner-content');
 
-                // Close all other open books first
-                document.querySelectorAll('.book-card.is-open').forEach(c => {
-                    if (c !== this) c.classList.remove('is-open');
-                });
+                // If book is open and user clicks inside the content (to scroll/read), don't close it
+                // UNLESS they click exactly on the instruction or a close area
+                if (isOpen && clickedContent && !e.target.closest('.book-instruction')) {
+                    return;
+                }
 
                 // Toggle this book
                 this.classList.toggle('is-open');
 
-                // Reset transform when closing
+                // Close all other open books first
+                if (!isOpen) {
+                    document.querySelectorAll('.book-card.is-open').forEach(c => {
+                        if (c !== this) {
+                            c.classList.remove('is-open');
+                            const otherBook = c.querySelector('.book-3d-object');
+                            if (otherBook) otherBook.style.transform = `rotateY(-20deg) rotateX(5deg) scale(1)`;
+                        }
+                    });
+                }
+
+                // Set transform for this book
                 if (isOpen) {
+                    // We just removed is-open
                     book.style.transform = `rotateY(-20deg) rotateX(5deg) scale(1)`;
                 } else {
+                    // We just added is-open
                     book.style.transform = `rotateY(0deg) rotateX(0deg) scale(1.1)`;
                 }
             });
