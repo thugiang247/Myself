@@ -176,6 +176,25 @@ document.addEventListener('DOMContentLoaded', () => {
                     }, 500);
                 });
 
+                // --- 4. Fix mobile scroll hijacking ---
+                const innerContent = card.querySelector('.book-inner-content');
+                if (innerContent) {
+                    innerContent.addEventListener('touchstart', function (e) {
+                        if (card.classList.contains('is-open')) {
+                            // Stop propagation to prevent card parallax or other listeners 
+                            // from interfering with the scroll
+                            e.stopPropagation();
+                        }
+                    }, { passive: true });
+
+                    innerContent.addEventListener('touchmove', function (e) {
+                        if (card.classList.contains('is-open')) {
+                            // Ensure the event stays within the scrollable content
+                            e.stopPropagation();
+                        }
+                    }, { passive: true });
+                }
+
                 window.addEventListener('scroll', () => {
                     if (card.classList.contains('is-open')) return;
                     const rect = card.getBoundingClientRect();

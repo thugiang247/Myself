@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Navigate after animation
             setTimeout(() => {
                 window.location.href = targetUrl;
-            }, 600); // Matches CSS transition duration
+            }, 350); // Snappier feel
         });
     });
 

@@ -176,49 +176,27 @@ document.addEventListener('DOMContentLoaded', () => {
             'System operational.'
         ];
 
-        let logIndex = 0;
-        const addLog = () => {
-            if (logIndex < logs.length) {
-                const line = document.createElement('span');
-                line.className = 'diagnostic-line';
-                line.textContent = `> ${logs[logIndex]}`;
-                diagnostics.appendChild(line);
-
-                // Animation
-                setTimeout(() => {
-                    line.style.opacity = '1';
-                    line.style.transform = 'translateY(0)';
-                    line.style.transition = 'all 0.4s ease';
-                }, 10);
-
-                logIndex++;
-                setTimeout(addLog, 200 + Math.random() * 400);
-            }
-        };
-
-        // Percentage counter
+        // Simplified Preloader: Just the percentage
         let count = 0;
         const isMobile = window.matchMedia("(max-width: 1024px)").matches;
-        const incrementSpeed = isMobile ? 30 : 50; // Faster on mobile to reduce waiting
+        const incrementSpeed = isMobile ? 10 : 20; // Super fast
 
         const countInterval = setInterval(() => {
-            count += Math.floor(Math.random() * 8) + 2;
+            count += Math.floor(Math.random() * 15) + 5;
             if (count >= 100) {
                 count = 100;
                 clearInterval(countInterval);
 
-                // Final delay before hiding
                 setTimeout(() => {
                     preloader.style.opacity = '0';
                     preloader.style.visibility = 'hidden';
-                    preloader.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+                    preloader.style.transition = 'opacity 0.4s ease';
                     document.body.style.overflow = 'auto';
-                }, 300);
+                }, 150);
             }
             if (percentage) percentage.textContent = `${count}%`;
         }, incrementSpeed);
 
-        addLog();
         document.body.style.overflow = 'hidden';
     };
 

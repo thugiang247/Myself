@@ -18,6 +18,9 @@ window.onYouTubeIframeAPIReady = function () {
         'modestbranding': 1,
         'rel': 0,
         'showinfo': 0,
+        'iv_load_policy': 3, // Disable annotations
+        'cc_load_policy': 0, // Disable captions
+        'autohide': 1,     // Hide controls
         'enablejsapi': 1,
         'widget_referrer': window.location.href
     };
@@ -27,7 +30,8 @@ window.onYouTubeIframeAPIReady = function () {
     }
 
     ytPlayer = new YT.Player('youtube-player-container', {
-        height: '360', // Larger size (hidden) helps bypass some restrictions
+        host: 'https://www.youtube-nocookie.com',
+        height: '360',
         width: '640',
         videoId: '',
         playerVars: playerVars,

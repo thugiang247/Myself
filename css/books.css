@@ -253,6 +253,8 @@ section {
 
 .book-card.is-open .book-3d-cover {
     transform: rotateY(-160deg);
+    pointer-events: none;
+    /* Let touches pass through to the pages */
 }
 
 .book-3d-front,
@@ -287,7 +289,7 @@ section {
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
     transform: translateZ(-2px);
     z-index: 1;
-    overflow: visible;
+    overflow: hidden;
     /* Changed to allow inner content scroll to be visible */
     border-radius: 0 3px 3px 0;
 }
@@ -302,6 +304,15 @@ section {
     flex-direction: column;
     overflow-y: auto;
     overflow-x: hidden;
+
+    /* Mobile-specific scroll improvements */
+    -webkit-overflow-scrolling: touch;
+    /* Kinetic scrolling for iOS */
+    overscroll-behavior: contain;
+    /* Prevent scrolling the body when reaching ends */
+    touch-action: pan-y;
+    /* Allow vertical panning, prevent page moves */
+
     scrollbar-width: thin;
     scrollbar-color: var(--text-accent) transparent;
 }
