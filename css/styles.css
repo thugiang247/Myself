@@ -71,7 +71,7 @@ body {
     background: #f5e6d3;
 }
 
-/* ========== MINIMALIST AMBIENT BACKGROUND ========== */
+/* ========== PRECISION GRID & FILM GRAIN ========== */
 .ambient-bg {
     position: fixed;
     top: 0;
@@ -83,48 +83,142 @@ body {
     overflow: hidden;
 }
 
-.bg-glow {
-    position: absolute;
-    width: 50vw;
-    height: 50vw;
-    border-radius: 50%;
-    filter: blur(160px);
-    opacity: 0.08;
-    pointer-events: none;
-    z-index: -4;
-}
-
-.bg-glow.p1 {
-    top: -10%;
-    left: -10%;
-    background: radial-gradient(circle, #333, transparent);
-}
-
-.bg-glow.p2 {
-    bottom: -10%;
-    right: -10%;
-    background: radial-gradient(circle, #222, transparent);
-}
-
-.bg-glow.p3 {
-    top: 40%;
-    left: 60%;
-    background: radial-gradient(circle, var(--text-accent), transparent);
-    width: 30vw;
-    height: 30vw;
-    opacity: 0.03;
-}
-
-.noise-overlay {
+/* The Technical Grid */
+.technical-grid {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -3;
+    background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 80px 80px;
+    z-index: -2;
+    pointer-events: none;
+}
+
+.technical-grid::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1px;
+    height: 100vh;
+    background: linear-gradient(to bottom, transparent, rgba(212, 175, 55, 0.2), transparent);
+    transform: translate(-50%, -50%);
+    opacity: 0.5;
+}
+
+.grid-marker {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-body);
+    font-size: 0.5rem;
+    color: var(--text-accent);
+    opacity: 0.2;
+    pointer-events: none;
+    letter-spacing: 2px;
+}
+
+.grid-marker span {
+    display: block;
+}
+
+/* Vertical Side Text */
+.side-branding {
+    position: fixed;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    font-family: var(--font-body);
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.technical-grid::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(212, 175, 55, 0.08) 0%, transparent 40%);
+    z-index: -1;
+}
+
+/* Moving Film Grain */
+.noise-overlay {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    z-index: 10000;
     opacity: 0.04;
     pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    animation: grainShift 8s steps(10) infinite;
+}
+
+.side-branding::before {
+    content: '';
+    display: inline-block;
+    width: 40px;
+    height: 1px;
+    background: var(--text-accent);
+    vertical-align: middle;
+    margin-right: 1.5rem;
+}
+
+@keyframes grainShift {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    10% {
+        transform: translate(-5%, -10%);
+    }
+
+    20% {
+        transform: translate(-15%, 5%);
+    }
+
+    30% {
+        transform: translate(7%, -25%);
+    }
+
+    40% {
+        transform: translate(-15%, 15%);
+    }
+
+    50% {
+        transform: translate(15%, 15%);
+    }
+
+    60% {
+        transform: translate(5%, -15%);
+    }
+
+    70% {
+        transform: translate(-25%, 10%);
+    }
+
+    80% {
+        transform: translate(15%, -5%);
+    }
+
+    90% {
+        transform: translate(0%, 5%);
+    }
 }
 
 /* ========== PRELOADER ========== */
@@ -431,6 +525,20 @@ section {
     font-weight: 300;
     letter-spacing: -0.02em;
     font-family: var(--font-heading);
+    position: relative;
+}
+
+.section-title::after {
+    content: '[ SPEC_01 ]';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-body);
+    font-size: 0.6rem;
+    letter-spacing: 4px;
+    color: var(--text-accent);
+    opacity: 0.4;
 }
 
 /* Global Monochrome Images Filter */

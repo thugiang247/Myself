@@ -106,7 +106,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // ========== INTERACTIVE PARALLAX & TILT ANIMATIONS ==========
+    // ========== INTERACTIVE TECHNICAL GRID ==========
+    const initTechnicalGrid = () => {
+        const root = document.documentElement;
+        window.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth) * 100;
+            const y = (e.clientY / window.innerHeight) * 100;
+            root.style.setProperty('--mouse-x', `${x}%`);
+            root.style.setProperty('--mouse-y', `${y}%`);
+        });
+
+        // Dynamic coordinate marking (subtle breakthrough)
+        const grid = document.querySelector('.technical-grid');
+        if (grid) {
+            for (let i = 0; i < 5; i++) {
+                const marker = document.createElement('div');
+                marker.className = 'grid-marker';
+                marker.style.top = Math.random() * 100 + '%';
+                marker.style.left = Math.random() * 100 + '%';
+                marker.innerHTML = `<span>LAT_${(Math.random() * 90).toFixed(2)}</span><span>LON_${(Math.random() * 180).toFixed(2)}</span>`;
+                grid.appendChild(marker);
+            }
+        }
+    };
+
+    // ========== INTERACTIVE PARALLAX ==========
     const initPointerAnimations = () => {
         const hero = document.getElementById('hero');
         const heroContent = hero?.querySelector('.section-content');
@@ -114,29 +138,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let mouseX = 0, mouseY = 0;
         let currentX = 0, currentY = 0;
-        const friction = 0.08; // Control smooth lag (lower = smoother/slower)
+        const friction = 0.05;
 
         window.addEventListener('mousemove', (e) => {
-            const { clientX, clientY } = e;
-            const { innerWidth, innerHeight } = window;
-
-            // Normalize coordinates to -1 to 1
-            mouseX = (clientX / innerWidth - 0.5) * 2;
-            mouseY = (clientY / innerHeight - 0.5) * 2;
+            mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+            mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
         });
 
         const animateParallax = () => {
-            // Lerp logic
             currentX += (mouseX - currentX) * friction;
             currentY += (mouseY - currentY) * friction;
-
-            const xPos = currentX * 25; // movement intensity
-            const yPos = currentY * 25;
-
-            heroContent.style.transform = `translateX(${-xPos}px) translateY(${-yPos}px)`;
+            heroContent.style.transform = `translateX(${-currentX * 15}px) translateY(${-currentY * 15}px) rotateX(${-currentY * 2}deg) rotateY(${currentX * 2}deg)`;
             requestAnimationFrame(animateParallax);
         };
-
         animateParallax();
     };
 
@@ -264,6 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initPreloader();
     initNavbar();
     initScrollAnimations();
+    initTechnicalGrid();
     initPointerAnimations();
     initParticleTrail();
     initSkillsAnimation();

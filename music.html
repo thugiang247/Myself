@@ -10,6 +10,7 @@
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Patrick+Hand&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/music.css">
     <link rel="stylesheet" href="css/transitions.css">
     <link rel="stylesheet" href="css/cursor.css">
@@ -23,9 +24,12 @@
     <div id="youtube-player-container"
         style="position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none;"></div>
 
-    <!-- Space Background -->
-    <div class="space-background"></div>
-    <div class="space-overlay"></div>
+    <!-- Refined Aesthetic Background -->
+    <div class="ambient-bg">
+        <div class="technical-grid"></div>
+        <div class="noise-overlay"></div>
+    </div>
+    <div class="side-branding">Sound Engineering // Audio & Soul</div>
 
     <!-- Particle Background Canvas -->
     <canvas id="particle-canvas"></canvas>
@@ -413,6 +417,7 @@
         </div>
     </div>
 
+    <script src="js/main.js"></script>
     <script src="js/youtube-player.js"></script>
     <script src="https://www.youtube.com/iframe_api"></script>
     <script src="js/navigation.js"></script>
