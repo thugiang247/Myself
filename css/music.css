@@ -14,6 +14,18 @@ body.era-reflection {
     --era-glow: rgba(255, 255, 255, 0.2);
 }
 
+/* Hidden YouTube Player Wrapper */
+#youtube-player-container {
+    position: fixed;
+    bottom: -1000px;
+    left: -1000px;
+    width: 640px;
+    height: 360px;
+    pointer-events: none;
+    opacity: 0.01;
+    z-index: -100;
+}
+
 /* Soft Card Update */
 .playlist-card {
     border-radius: 24px;
@@ -851,14 +863,21 @@ section {
 }
 
 .quote-text {
-    font-size: 2rem;
-    font-family: var(--font-heading);
+    font-size: 2.2rem;
     font-style: italic;
-    color: var(--text-primary);
-    line-height: 1.8;
-    margin-bottom: 2rem;
-    white-space: nowrap;
-    text-align: center;
+    color: var(--text-accent);
+    line-height: 1.5;
+    margin: 0 auto;
+    max-width: 85%;
+    text-wrap: balance;
+}
+
+@media (max-width: 768px) {
+    .quote-text {
+        font-size: 1.4rem;
+        line-height: 1.4;
+        max-width: 100%;
+    }
 }
 
 .quote-author {
@@ -1262,47 +1281,42 @@ body.mode-crazy .hero-title {
     transform: rotate(-1deg);
 }
 
+/* ========== RESPONSIVE CLEANUP ========== */
 @media (max-width: 768px) {
-    #navbar {
-        padding: 0.7rem 1rem;
-        justify-content: space-between;
-        height: 60px;
-    }
-
-    .logo {
-        font-size: 1.1rem;
-        white-space: nowrap;
-        max-width: 40%;
-    }
-
-    .persona-switch-container {
-        margin: 0 auto 0 10px;
-        gap: 0;
-    }
-
-    .switch-label {
-        display: none !important;
-    }
-
-    .switch {
-        transform: scale(0.8);
-    }
-
-    .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 100%;
-        height: 100vh;
-        background: rgba(5, 7, 10, 0.98);
+    .hero-stats {
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        z-index: 1001;
+        gap: 2rem;
     }
 
-    .menu-toggle {
-        display: block;
-        font-size: 1.2rem;
+    .stat-number {
+        font-size: 2.5rem;
+    }
+
+    .playlist-grid {
+        grid-template-columns: 1fr !important;
+        padding: 0 1rem;
+    }
+
+    .tracks-list {
+        padding: 0 0.5rem;
+    }
+
+    .track-item {
+        padding: 0.75rem;
+        gap: 0.75rem;
+    }
+
+    .track-name {
+        font-size: 1rem;
+    }
+
+    .music-sheet-paper {
+        padding: 2.5rem 1.5rem;
+        margin: 0 1rem;
+    }
+
+    .sheet-content p {
+        font-size: 1.1rem;
+        line-height: 1.6;
     }
 }

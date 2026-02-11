@@ -17,7 +17,9 @@ window.onYouTubeIframeAPIReady = function () {
         'fs': 0,
         'modestbranding': 1,
         'rel': 0,
-        'showinfo': 0
+        'showinfo': 0,
+        'enablejsapi': 1,
+        'widget_referrer': window.location.href
     };
 
     if (window.location.protocol !== 'file:') {
@@ -25,8 +27,8 @@ window.onYouTubeIframeAPIReady = function () {
     }
 
     ytPlayer = new YT.Player('youtube-player-container', {
-        height: '1',
-        width: '1',
+        height: '360', // Larger size (hidden) helps bypass some restrictions
+        width: '640',
         videoId: '',
         playerVars: playerVars,
         events: {
@@ -58,18 +60,26 @@ let skipErrorTimeout;
 function onPlayerError(event) {
     console.error("YouTube Player Error:", event.data);
 
+    const mainTitle = document.querySelector('.track-title');
+    const miniTitle = document.querySelector('.mini-track-name');
+
     // Error 150/101 means embedding not allowed
-    if (event.data === 150 || event.data === 101 || event.data === 5) {
-        console.warn("Video restricted/unavailable. Skipping to next track in 3s...");
+    if (event.data === 150 || event.data === 101 || event.data === 100 || event.data === 5) {
+        console.warn("Video restricted/unavailable. Showing fallback...");
 
-        // Visual feedback
-        const mainTitle = document.querySelector('.track-title');
-        if (mainTitle) mainTitle.textContent = "Video không khả dụng. Đang chuyển bài...";
+        const currentVideoId = ytPlayer.getVideoData().video_id;
+        const youtubeUrl = `https://www.youtube.com/watch?v=${currentVideoId}`;
 
+        const fallbackMsg = `Video bị chặn nhúng. <a href="${youtubeUrl}" target="_blank" rel="noopener noreferrer" style="color: var(--text-accent); text-decoration: underline;">Nghe tại YouTube</a>`;
+
+        if (mainTitle) mainTitle.innerHTML = fallbackMsg;
+        if (miniTitle) miniTitle.innerHTML = "Lỗi phát nhạc";
+
+        // Auto skip after 8s if it's an error
         clearTimeout(skipErrorTimeout);
         skipErrorTimeout = setTimeout(() => {
             YouTubeAudio.next();
-        }, 3000);
+        }, 8000);
     }
 }
 

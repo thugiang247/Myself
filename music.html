@@ -2,6 +2,9 @@
 <html lang="vi">
 
 <head>
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://www.youtube.com https://s.ytimg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://i.imgur.com https://images.unsplash.com https://picsum.photos; frame-src 'self' https://www.youtube.com; connect-src 'self'; upgrade-insecure-requests;">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Âm Nhạc | Minh</title>
@@ -31,8 +34,7 @@
     <div class="progress-bar" id="progressBar"></div>
 
     <!-- Hidden YouTube Player -->
-    <div id="youtube-player-container"
-        style="position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none;"></div>
+    <div id="youtube-player-container"></div>
 
     <!-- Refined Aesthetic Background -->
     <div class="ambient-bg">
@@ -155,7 +157,7 @@
 
             <div class="tracks-list">
                 <!-- Track 1: Swan Lake -->
-                <div class="track-item" data-video-id="vAeRzW98IFw">
+                <div class="track-item" data-video-id="9rJoB7y6Ncs">
                     <div class="track-number">1</div>
                     <div class="track-thumbnail">
                         <i class="fas fa-music"></i>
@@ -170,7 +172,7 @@
                 </div>
 
                 <!-- Track 2: Moonlight Sonata -->
-                <div class="track-item" data-video-id="sbTVZMJ9Z2I">
+                <div class="track-item" data-video-id="4Tr0otuiQuU">
                     <div class="track-number">2</div>
                     <div class="track-thumbnail">
                         <i class="fas fa-music"></i>
@@ -185,7 +187,7 @@
                 </div>
 
                 <!-- Track 3: Clair de Lune -->
-                <div class="track-item" data-video-id="WNcsUNKlAKw">
+                <div class="track-item" data-video-id="ea2WoUtbzuw">
                     <div class="track-number">3</div>
                     <div class="track-thumbnail">
                         <i class="fas fa-music"></i>
@@ -225,7 +227,7 @@
 
             <div class="tracks-list">
                 <!-- Track 1: Chuyện hoa sim -->
-                <div class="track-item" data-video-id="1mqVmL9UGws">
+                <div class="track-item" data-video-id="r3yosf_qjEY">
                     <div class="track-number">1</div>
                     <div class="track-thumbnail">
                         <i class="fas fa-music"></i>
@@ -240,7 +242,7 @@
                 </div>
 
                 <!-- Track 2: Liên khúc Tuấn Vũ 5 -->
-                <div class="track-item" data-video-id="b7CXcDywDYo" data-start="710">
+                <div class="track-item" data-video-id="HwJzR3K6cBM">
                     <div class="track-number">2</div>
                     <div class="track-thumbnail">
                         <i class="fas fa-microphone-alt"></i>
@@ -433,6 +435,7 @@
     <script src="js/navigation.js"></script>
     <script src="js/mood-switcher.js"></script>
     <script src="js/persona.js"></script>
+    <script src="js/security.js"></script>
     <script src="js/gravity-leak.js"></script>
     <script src="js/music.js"></script>
     <script src="js/transitions.js"></script>

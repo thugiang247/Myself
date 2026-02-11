@@ -109,12 +109,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // ========== INTERACTIVE TECHNICAL GRID ==========
     const initTechnicalGrid = () => {
         const root = document.documentElement;
-        window.addEventListener('mousemove', (e) => {
-            const x = (e.clientX / window.innerWidth) * 100;
-            const y = (e.clientY / window.innerHeight) * 100;
-            root.style.setProperty('--mouse-x', `${x}%`);
-            root.style.setProperty('--mouse-y', `${y}%`);
-        });
+        // Optimization: Disable mouse glow and coordinate tracking on mobile/tablets
+        if (window.matchMedia("(min-width: 1025px)").matches) {
+            window.addEventListener('mousemove', (e) => {
+                const x = (e.clientX / window.innerWidth) * 100;
+                const y = (e.clientY / window.innerHeight) * 100;
+                root.style.setProperty('--mouse-x', `${x}%`);
+                root.style.setProperty('--mouse-y', `${y}%`);
+            });
+        }
 
         // Dynamic coordinate marking (subtle breakthrough)
         const grid = document.querySelector('.technical-grid');
@@ -195,8 +198,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Percentage counter
         let count = 0;
+        const isMobile = window.matchMedia("(max-width: 1024px)").matches;
+        const incrementSpeed = isMobile ? 30 : 50; // Faster on mobile to reduce waiting
+
         const countInterval = setInterval(() => {
-            count += Math.floor(Math.random() * 5) + 1;
+            count += Math.floor(Math.random() * 8) + 2;
             if (count >= 100) {
                 count = 100;
                 clearInterval(countInterval);
@@ -205,12 +211,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                     preloader.style.opacity = '0';
                     preloader.style.visibility = 'hidden';
-                    preloader.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+                    preloader.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
                     document.body.style.overflow = 'auto';
-                }, 500);
+                }, 300);
             }
             if (percentage) percentage.textContent = `${count}%`;
-        }, 50);
+        }, incrementSpeed);
 
         addLog();
         document.body.style.overflow = 'hidden';
@@ -220,6 +226,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const initParticleTrail = () => {
         const canvas = document.getElementById('particle-canvas');
         if (!canvas) return;
+
+        // Optimization: Disable particle trail on small screens / mobile to save GPU
+        if (window.matchMedia("(max-width: 1024px)").matches) {
+            canvas.style.display = 'none';
+            return;
+        }
 
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;

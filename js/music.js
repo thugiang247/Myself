@@ -244,30 +244,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // ========== TRACK ITEMS ==========
-    const initTrackItems = () => {
-        document.querySelectorAll('.track-play-btn').forEach(btn => {
-            btn.addEventListener('click', function () {
-                const icon = this.querySelector('i');
-                const isPlaying = icon.classList.contains('fa-pause');
-
-                // Reset all other buttons
-                document.querySelectorAll('.track-play-btn i').forEach(i => {
-                    i.classList.remove('fa-pause');
-                    i.classList.add('fa-play');
-                });
-
-                if (!isPlaying) {
-                    icon.classList.remove('fa-play');
-                    icon.classList.add('fa-pause');
-                } else {
-                    icon.classList.remove('fa-pause');
-                    icon.classList.add('fa-play');
-                }
-            });
-        });
-    };
-
     // ========== SCROLL ANIMATIONS ==========
     const initScrollAnimations = () => {
         const observerOptions = {
@@ -326,8 +302,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     };
-
-    // Initialize all modules
     initNavbar();
     initProgressBar();
     initSmoothScroll();
@@ -336,6 +310,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initVisualizer();
     initParticles();
     initPlaylistInteraction();
-    initTrackItems();
     initScrollAnimations();
 });
