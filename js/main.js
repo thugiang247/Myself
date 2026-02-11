@@ -155,22 +155,65 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
 
-    // ========== PRELOADER LOGIC ==========
+    // ========== SYSTEM DIAGNOSTICS PRELOADER ==========
     const initPreloader = () => {
         const preloader = document.getElementById('preloader');
         if (!preloader) return;
 
-        window.addEventListener('load', () => {
-            // Give a little extra time for the animations to play
-            setTimeout(() => {
-                preloader.classList.add('fade-out');
+        const diagnostics = preloader.querySelector('.loader-diagnostics');
+        const percentage = preloader.querySelector('.loader-percentage');
 
-                // Remove from DOM after fade animation
+        const logs = [
+            'Initializing core engine...',
+            'Loading technical grid system...',
+            'Syncing obsidian & champagne palette...',
+            'Calibrating precision markers...',
+            'Establishing archive connection...',
+            'Finalizing aesthetic assets...',
+            'System operational.'
+        ];
+
+        let logIndex = 0;
+        const addLog = () => {
+            if (logIndex < logs.length) {
+                const line = document.createElement('span');
+                line.className = 'diagnostic-line';
+                line.textContent = `> ${logs[logIndex]}`;
+                diagnostics.appendChild(line);
+
+                // Animation
                 setTimeout(() => {
-                    preloader.style.display = 'none';
-                }, 1000);
-            }, 1500);
-        });
+                    line.style.opacity = '1';
+                    line.style.transform = 'translateY(0)';
+                    line.style.transition = 'all 0.4s ease';
+                }, 10);
+
+                logIndex++;
+                setTimeout(addLog, 200 + Math.random() * 400);
+            }
+        };
+
+        // Percentage counter
+        let count = 0;
+        const countInterval = setInterval(() => {
+            count += Math.floor(Math.random() * 5) + 1;
+            if (count >= 100) {
+                count = 100;
+                clearInterval(countInterval);
+
+                // Final delay before hiding
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    preloader.style.visibility = 'hidden';
+                    preloader.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+                    document.body.style.overflow = 'auto';
+                }, 500);
+            }
+            if (percentage) percentage.textContent = `${count}%`;
+        }, 50);
+
+        addLog();
+        document.body.style.overflow = 'hidden';
     };
 
     // ========== PARTICLE CURSOR TRAIL ==========
