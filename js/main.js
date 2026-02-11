@@ -87,24 +87,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { root: null, rootMargin: '0px', threshold: 0.1 });
         sections.forEach(section => sectionObserver.observe(section));
 
-        // --- Staggered item fade-in ---
-        const animatedItems = document.querySelectorAll('.interest-block');
+        // --- Staggered item fade-in (Refined) ---
+        const animatedItems = document.querySelectorAll('.interest-block, .skill-tag, .bio-card');
         const itemObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
                     setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, index * 100);
+                        entry.target.classList.add('reveal-active');
+                    }, index * 150);
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.15 });
+
         animatedItems.forEach(item => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(40px)';
-            item.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-            itemObserver.observe(item)
+            item.classList.add('reveal-hidden');
+            itemObserver.observe(item);
         });
     };
 
@@ -177,11 +175,11 @@ document.addEventListener('DOMContentLoaded', () => {
             constructor(x, y) {
                 this.x = x;
                 this.y = y;
-                this.size = Math.random() * 3 + 1;
-                this.speedX = Math.random() * 2 - 1;
-                this.speedY = Math.random() * 2 - 1;
+                this.size = Math.random() * 1.5 + 0.5;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
                 this.life = 100;
-                this.color = `rgba(255, 215, 0, ${Math.random() * 0.5 + 0.3})`;
+                this.color = `rgba(212, 175, 55, ${Math.random() * 0.3 + 0.1})`;
             }
 
             update() {
