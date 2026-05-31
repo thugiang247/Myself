@@ -327,11 +327,12 @@
 
 /* Story */
 .milestone-story {
-    font-size: 0.88rem;
-    color: var(--text-secondary);
-    line-height: 1.85;
-    margin-bottom: 1.4rem;
-    font-weight: 300;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.15rem;
+    color: rgba(245, 245, 245, 0.8);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    font-weight: normal;
 }
 
 .milestone-story em {
@@ -376,6 +377,33 @@
     color: var(--text-secondary);
     opacity: 0.5;
 }
+
+/* Diary excerpt — handwritten feel */
+.milestone-diary {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: rgba(245, 245, 245, 0.75);
+    background: rgba(212, 175, 55, 0.04);
+    border-left: 2px solid rgba(212, 175, 55, 0.35);
+    padding: 1rem 1.4rem;
+    margin: 0.6rem 0 1.2rem;
+    border-radius: 0 4px 4px 0;
+    font-style: normal;
+    position: relative;
+}
+
+.milestone-diary::before {
+    content: '"';
+    position: absolute;
+    top: -0.5rem;
+    left: 0.8rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    color: rgba(212, 175, 55, 0.15);
+    line-height: 1;
+}
+
 
 /* ── "Now" card special styles ── */
 .card-now {
@@ -524,10 +552,11 @@
 }
 
 .capsule-item p {
-    font-size: 0.88rem;
-    color: var(--text-secondary);
-    line-height: 1.8;
-    font-weight: 300;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.1rem;
+    color: rgba(245, 245, 245, 0.85);
+    line-height: 1.6;
+    font-weight: normal;
 }
 
 .capsule-sign {
