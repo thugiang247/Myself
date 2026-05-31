@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://i.imgur.com https://images.unsplash.com; connect-src 'self'; upgrade-insecure-requests;">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dấu Mốc | Minh</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Patrick+Hand&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/journey.css">
+    <link rel="stylesheet" href="css/transitions.css">
+    <link rel="stylesheet" href="css/cursor.css">
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-status">System: Online</div>
+        <div class="loader-content">
+            <h1 class="loader-logo">Minh</h1>
+            <div class="loader-line"></div>
+            <div class="loader-percentage">0%</div>
+        </div>
+        <div class="loader-diagnostics"></div>
+    </div>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Refined Aesthetic Background -->
+    <div class="ambient-bg">
+        <div class="technical-grid"></div>
+        <div class="noise-overlay"></div>
+    </div>
+    <div class="side-branding">Memory Archive // Life & Lessons</div>
+
+    <!-- Particle Canvas -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="subpage-nav">
+        <div class="logo">
+            <a href="index.html" class="logo-text" data-crazy="logo">Minh</a>
+        </div>
+
+        <!-- Persona Switcher -->
+        <div class="persona-switch-container">
+            <span class="switch-label">Nghiêm túc</span>
+            <label class="switch">
+                <input type="checkbox" id="personaToggle">
+                <span class="slider round"></span>
+            </label>
+            <span class="switch-label">Bất ổn</span>
+        </div>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html" data-crazy="nav-home-sub">Trang chủ</a></li>
+            <li><a href="books.html" data-crazy="nav-books">Sách</a></li>
+            <li><a href="music.html" data-crazy="nav-music">Âm nhạc</a></li>
+        </ul>
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="journey-hero">
+        <div class="journey-hero-content">
+            <span class="journey-eyebrow">Biên niên ký · 2022 — nay</span>
+            <h1 class="journey-hero-title" data-crazy="journey-hero-title">Dấu<br><em>Mốc</em></h1>
+            <p class="journey-hero-sub">Không phải CV. Không phải thành tích.<br>Chỉ là những khoảnh khắc đã thay đổi
+                tôi — theo cách tôi thực sự cảm nhận.</p>
+            <div class="journey-hero-line"></div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline-section">
+        <div class="section-content">
+            <span class="section-label">Hành trình</span>
+            <h2 class="section-title">Những Ngày Đã Qua</h2>
+
+            <div class="timeline-wrapper">
+                <!-- Central line -->
+                <div class="timeline-spine"></div>
+
+                <!-- Milestone 1: Tháng 12/2022 -->
+                <div class="milestone milestone-left reveal-milestone">
+                    <div class="milestone-connector">
+                        <div class="milestone-dot">
+                            <span class="dot-pulse"></span>
+                        </div>
+                        <div class="milestone-line-h"></div>
+                    </div>
+                    <div class="milestone-card">
+                        <div class="milestone-period">
+                            <span class="period-tag">Tháng 12</span>
+                            <span class="period-year">2022</span>
+                        </div>
+                        <div class="milestone-icon-wrap">
+                            <i class="fas fa-pen-nib"></i>
+                        </div>
+                        <h3 class="milestone-title">Bắt đầu viết nhật ký</h3>
+                        <p class="milestone-story">Không ai bắt. Không có lý do rõ ràng. Chỉ là một ngày nào đó tháng
+                            12, tôi mở trang đầu tiên và viết — vì linh cảm rằng <em>sau này sẽ có ích</em>.</p>
+                        <div class="milestone-lesson">
+                            <i class="fas fa-quote-left"></i>
+                            <span>Đôi khi tin vào trực giác là đủ để bắt đầu.</span>
+                        </div>
+                        <div class="milestone-tag">Viết lách & Nội tâm</div>
+                    </div>
+                </div>
+
+                <!-- Milestone 2: 2023 -->
+                <div class="milestone milestone-right reveal-milestone">
+                    <div class="milestone-connector">
+                        <div class="milestone-line-h"></div>
+                        <div class="milestone-dot">
+                            <span class="dot-pulse"></span>
+                        </div>
+                    </div>
+                    <div class="milestone-card">
+                        <div class="milestone-period">
+                            <span class="period-tag">Năm</span>
+                            <span class="period-year">2023</span>
+                        </div>
+                        <div class="milestone-icon-wrap">
+                            <i class="fas fa-city"></i>
+                        </div>
+                        <h3 class="milestone-title">Lần đầu xa nhà</h3>
+                        <p class="milestone-story">Lên thành phố học. Mang theo vali và một đống kỳ vọng chưa biết tên.
+                            Xa nhà lần đầu — mới hiểu ra rằng tự do và cô đơn đôi khi là một thứ.</p>
+                        <div class="milestone-lesson">
+                            <i class="fas fa-quote-left"></i>
+                            <span>Con người cần được lạc lối một lần để biết mình đang đứng ở đâu.</span>
+                        </div>
+                        <div class="milestone-tag">Trưởng thành & Thích nghi</div>
+                    </div>
+                </div>
+
+                <!-- Milestone 3: 2024 -->
+                <div class="milestone milestone-left reveal-milestone">
+                    <div class="milestone-connector">
+                        <div class="milestone-dot">
+                            <span class="dot-pulse"></span>
+                        </div>
+                        <div class="milestone-line-h"></div>
+                    </div>
+                    <div class="milestone-card">
+                        <div class="milestone-period">
+                            <span class="period-tag">Năm</span>
+                            <span class="period-year">2024</span>
+                        </div>
+                        <div class="milestone-icon-wrap">
+                            <i class="fas fa-running"></i>
+                        </div>
+                        <h3 class="milestone-title">Chạy như điên, gầy rạc người</h3>
+                        <p class="milestone-story">Chạy bộ như một cách trốn khỏi đầu óc. Cứ chạy — đến khi gầy rạc, đến
+                            khi không còn biết mình chạy vì sức khỏe hay vì muốn kiểm soát gì đó trong cuộc đời.</p>
+                        <div class="milestone-lesson">
+                            <i class="fas fa-quote-left"></i>
+                            <span>Kỷ luật và ám ảnh có ranh giới mỏng hơn tôi tưởng.</span>
+                        </div>
+                        <div class="milestone-tag">Thể xác & Kỷ luật</div>
+                    </div>
+                </div>
+
+                <!-- Milestone 4: 2025 -->
+                <div class="milestone milestone-right reveal-milestone">
+                    <div class="milestone-connector">
+                        <div class="milestone-line-h"></div>
+                        <div class="milestone-dot">
+                            <span class="dot-pulse"></span>
+                        </div>
+                    </div>
+                    <div class="milestone-card">
+                        <div class="milestone-period">
+                            <span class="period-tag">Năm</span>
+                            <span class="period-year">2025</span>
+                        </div>
+                        <div class="milestone-icon-wrap">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3 class="milestone-title">Theo chân ông chú vào xưởng ô tô</h3>
+                        <p class="milestone-story">Tay dính dầu, đầu óc học cách quan sát. Ít ngờ rằng những ngày leo
+                            trèo dưới gầm xe lại là lúc tôi học nói chuyện — mồm mép mau lẹ hơn vì phải giải thích với
+                            khách hàng mỗi ngày.</p>
+                        <div class="milestone-lesson">
+                            <i class="fas fa-quote-left"></i>
+                            <span>Kỹ năng xã hội không học trong sách — học trong xưởng.</span>
+                        </div>
+                        <div class="milestone-tag">Nghề nghiệp & Giao tiếp</div>
+                    </div>
+                </div>
+
+                <!-- Milestone 5: 2026 — NOW -->
+                <div class="milestone milestone-left reveal-milestone milestone-now">
+                    <div class="milestone-connector">
+                        <div class="milestone-dot dot-now">
+                            <span class="dot-pulse"></span>
+                        </div>
+                        <div class="milestone-line-h"></div>
+                    </div>
+                    <div class="milestone-card card-now">
+                        <div class="now-badge">Hiện tại</div>
+                        <div class="milestone-period">
+                            <span class="period-tag">Năm</span>
+                            <span class="period-year">2026</span>
+                        </div>
+                        <div class="milestone-icon-wrap">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <h3 class="milestone-title">Rời xưởng, vào công ty cơ khí</h3>
+                        <p class="milestone-story">Một bước khác. Lần đầu phải thức đêm khuya vì công việc — không phải
+                            vì chơi, không phải vì lướt điện thoại. Và kỳ lạ thay, tôi thấy mình ổn với điều đó.</p>
+                        <div class="milestone-lesson">
+                            <i class="fas fa-quote-left"></i>
+                            <span>Biết mình chịu được gì — đó cũng là một loại tự biết.</span>
+                        </div>
+                        <div class="milestone-tag">Nghề nghiệp & Bản lĩnh</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- "Tôi Đang Ở Đây" — capsule section -->
+    <section id="capsule-section">
+        <div class="section-content">
+            <span class="section-label">Tháng 5 · 2026</span>
+            <h2 class="section-title">Tôi Đang Ở Đây</h2>
+
+            <div class="capsule-container">
+                <div class="capsule-seal">
+                    <div class="seal-ring"></div>
+                    <div class="seal-inner">
+                        <i class="fas fa-hourglass-half"></i>
+                    </div>
+                </div>
+
+                <div class="capsule-body">
+                    <p class="capsule-address">Gửi Minh ngày sau —</p>
+
+                    <div class="capsule-grid">
+                        <div class="capsule-item">
+                            <span class="capsule-label">Tôi đang tin</span>
+                            <p>Rằng kiên nhẫn và quan sát kỹ sẽ đưa mình đến nơi mình muốn, dù chậm.</p>
+                        </div>
+                        <div class="capsule-item">
+                            <span class="capsule-label">Tôi đang học</span>
+                            <p>Cách thức hơn khuya mà vẫn giữ đầu óc tỉnh táo. Và cách nói ít hơn, làm nhiều hơn.</p>
+                        </div>
+                        <div class="capsule-item">
+                            <span class="capsule-label">Tôi đang muốn</span>
+                            <p>Một ngày được học đàn piano. Được đọc hết chồng sách đang tích lại. Được ngủ đủ giấc.</p>
+                        </div>
+                        <div class="capsule-item">
+                            <span class="capsule-label">Tôi vẫn chưa biết</span>
+                            <p>Mình sẽ ở đâu, làm gì năm 30 tuổi. Và có lẽ đó không phải điều cần phải biết ngay bây
+                                giờ.</p>
+                        </div>
+                    </div>
+
+                    <p class="capsule-sign">— Vũ Tiến Minh, 22 tuổi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section id="quote-section">
+        <div class="quote-container">
+            <i class="fas fa-quote-left quote-icon"></i>
+            <p class="quote-text">
+                "Tôi không nhớ tất cả những gì đã xảy ra. Nhưng tôi nhớ mình đã thay đổi như thế nào."
+            </p>
+            <p class="quote-author">— Vũ Tiến Minh</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>© 2025–2026 Vũ Tiến Minh. Mỗi ngày là một dấu mốc.</p>
+            <a href="index.html" class="back-home">
+                <i class="fas fa-arrow-left"></i> Quay lại trang chủ
+            </a>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/mood-switcher.js"></script>
+    <script src="js/persona.js"></script>
+    <script src="js/security.js"></script>
+    <script src="js/gravity-leak.js"></script>
+    <script src="js/transitions.js"></script>
+    <script src="js/cursor.js"></script>
+    <script src="js/journey.js"></script>
+</body>
+
+</html>
